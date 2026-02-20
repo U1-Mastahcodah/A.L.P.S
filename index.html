@@ -137,20 +137,26 @@ input{
   align-items:flex-start;
 }
 
+.welcome-panel h1,
+.welcome-panel p{
+  color:white;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
 .welcome-panel h1{
-  font-size:36px;
-  margin:0 0 10px 0;
-  color:white; 
+font-size:36px;
+margin:0 0 10px 0;
+color:white; 
 }
 
 .welcome-panel p{
   font-size:18px;
   max-width:700px;
-  color:#2f466b;
+  color:white;
   line-height:1.4;
   margin:0;
 }
 
+  
 .main{
   flex:1;
   display:none;
@@ -257,7 +263,7 @@ input{
 
   <div class="welcome-panel" id="welcomePanel">
     <h1 style="color:white;">Welcome to Aquinas Learning Portal System</h1>
-    <p>
+    <p style="color:white;">
       Access your subjects, facilities, announcements, and school information.
       Please log in or create an account to continue.
     </p>
@@ -329,6 +335,7 @@ function showPage(id){
 
 </body>
 </html>
+
 
 
 
