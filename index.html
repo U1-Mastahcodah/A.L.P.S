@@ -2,106 +2,129 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>A.L.P.S Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Aquinas Portal</title>
 
 <style>
-  * {
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-  }
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: linear-gradient(135deg, #0f1e4d, #1e3a8a);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-  }
-  .login-box {
-    background: white;
-    padding: 40px;
-    width: 100%;
-    max-width: 350px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  }
-  .login-box h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-  button {
-    width: 100%;
-    padding: 12px;
-    background: #1e2a44;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  .switch {
-    margin-top: 15px;
-    text-align: center;
-  }
-  .switch a {
-    cursor: pointer;
-    text-decoration: underline;
-  }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    background: url('school.jpg') no-repeat center center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* Dark Overlay */
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(10,20,60,0.65);
+    top:0;
+    left:0;
+}
+
+/* Login Box */
+.login-container{
+    position:relative;
+    background:white;
+    padding:50px 40px;
+    width:350px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+.login-container h2{
+    margin-bottom:25px;
+    color:#1e3a8a;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#d4af37;
+    border:none;
+    border-radius:6px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#f0c95e;
+}
+
+.small-text{
+    margin-top:15px;
+    font-size:13px;
+}
+
+.small-text a{
+    color:#1e3a8a;
+    text-decoration:none;
+}
 </style>
 </head>
+
 <body>
 
-<div class="login-box" id="loginBox">
-  <h2>Student Login</h2>
-  <input type="text" id="loginUser" placeholder="Username" />
-  <input type="password" id="loginPass" placeholder="Password" />
-  <button onclick="login()">Log In</button>
-  <div class="switch">
-    No account? <a onclick="showSignup()">Sign Up</a>
-  </div>
+<div class="login-container" id="loginBox">
+    <h2>Aquinas Portal Login</h2>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div class="small-text">
+        Don't have an account? <a href="#" onclick="showSignup()">Sign up</a>
+    </div>
 </div>
 
-<div class="login-box" id="signupBox" style="display:none;">
-  <h2>Create Account</h2>
-  <input type="text" id="signupUser" placeholder="Username" />
-  <input type="password" id="signupPass" placeholder="Password" />
-  <button onclick="signUp()">Create Account</button>
-  <div class="switch">
-    Already have an account? <a onclick="showLogin()">Log In</a>
-  </div>
+<div class="login-container" id="signupBox" style="display:none;">
+    <h2>Create Account</h2>
+    <input type="text" id="signupUser" placeholder="Username">
+    <input type="password" id="signupPass" placeholder="Password">
+    <button onclick="signUp()">Sign Up</button>
+    <div class="small-text">
+        Already have an account? <a href="#" onclick="showLogin()">Login</a>
+    </div>
 </div>
 
 <script>
   // If already logged in, go to home
-  if (localStorage.getItem("loggedIn") === "true") {
+  if(localStorage.getItem("loggedIn") === "true"){
     window.location.href = "./home.html";
   }
 
-  function showSignup() {
+  function showSignup(){
     document.getElementById("loginBox").style.display = "none";
     document.getElementById("signupBox").style.display = "block";
   }
 
-  function showLogin() {
+  function showLogin(){
     document.getElementById("signupBox").style.display = "none";
     document.getElementById("loginBox").style.display = "block";
   }
 
-  function signUp() {
+  function signUp(){
     const user = document.getElementById("signupUser").value.trim();
     const pass = document.getElementById("signupPass").value.trim();
-
-    if (user && pass) {
+    if(user && pass){
       localStorage.setItem("username", user);
       localStorage.setItem("password", pass);
       alert("Account created successfully!");
@@ -111,18 +134,18 @@
     }
   }
 
-  function login() {
+  function login(){
     const user = document.getElementById("loginUser").value.trim();
     const pass = document.getElementById("loginPass").value.trim();
 
     const savedUser = localStorage.getItem("username");
     const savedPass = localStorage.getItem("password");
 
-    if (user === savedUser && pass === savedPass) {
-      localStorage.setItem("loggedIn", "true");
+    if(user === savedUser && pass === savedPass){
+      localStorage.setItem("loggedIn","true");
       window.location.href = "./home.html";
     } else {
-      alert("Incorrect username or password.");
+      alert("Incorrect username or password");
     }
   }
 </script>
