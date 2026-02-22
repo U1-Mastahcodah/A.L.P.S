@@ -3,356 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A.L.P.S - Aquinas Learning Portal System</title>
+<title>Aquinas Learning Portal</title>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:'Segoe UI',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-  background:#ffffff;
-  color:#0f172a;
+    background: linear-gradient(135deg, #0f1e4d, #1e3a8a, #d4af37);
+    color:#333;
 }
 
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:0 20px;
+nav{
+    background: rgba(10,20,60,0.95);
+    padding:15px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
 }
 
-/* HEADER */
-header{ background:#0b3d91; }
-
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 20px;
-  flex-wrap:wrap;
+nav h2{
+    font-weight:600;
+    letter-spacing:1px;
 }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-shrink:0; /* prevent shrinking on mobile */
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
 }
 
-.logo img{
-  width:55px;
-  height:55px;
-  object-fit:contain;
-  border-radius:50%;
-  box-shadow:0 0 8px #fff,
-             0 0 15px #60a5fa,
-             0 0 25px #3b82f6;
-  flex-shrink:0; /* prevent image shrink */
+nav ul li{
+    cursor:pointer;
+    font-size:14px;
+    transition:0.3s;
 }
 
-.logo h2{
-  font-family:Georgia, serif;
-  color:white;
-  font-size:20px;
-  white-space:nowrap; /* prevent text wrapping */
-}
-
-.nav-right{
-  display:flex;
-  gap:20px;
-  align-items:center;
-}
-
-.nav-links{
-  display:flex;
-  gap:15px;
-  align-items:center;
-}
-
-.nav-links a{
-  color:white;
-  text-decoration:none;
-  line-height:1.5;
-}
-
-.logout{
-  background:white;
-  color:#0b3d91;
-  padding:6px 12px;
-  border-radius:6px;
-  text-decoration:none;
-  display:flex;
-  align-items:center;
+nav ul li:hover{
+    color:#d4af37;
 }
 
 /* HERO */
 .hero{
-  background:#f1f5f9;
-  padding:50px 20px;
-  border-radius:10px;
-  margin:30px 0;
-  text-align:center;
+    text-align:center;
+    padding:120px 20px;
+    color:white;
 }
 
-.hero h1{ color:#0b3d91; }
-.hero p{ color:#334155; margin-top:8px; }
-
-/* MAIN */
-.main{
-  display:flex;
-  gap:30px;
-  align-items:flex-start;
+.hero h1{
+    font-size:40px;
+    margin-bottom:15px;
+    font-weight:600;
 }
 
-/* SUBJECTS */
-.subjects{ flex:2; }
+.hero p{
+    font-size:16px;
+    margin-bottom:30px;
+    opacity:0.9;
+}
 
-.subject-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+.hero button{
+    padding:12px 30px;
+    border:none;
+    background:#d4af37;
+    color:#0f1e4d;
+    border-radius:6px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hero button:hover{
+    background:#f0c95e;
+}
+
+
+.section{
+    background:#fdf8ec; 
+    padding:80px 10%;
+    text-align:center;
+    border-top-left-radius:40px;
+    border-top-right-radius:40px;
+}
+
+.section h2{
+    margin-bottom:40px;
+    color:#1e3a8a;
+}
+
+/* CARDS */
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
 }
 
 .card{
-  background:white;
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 3px 8px rgba(0,0,0,0.1);
-  border-top:4px solid #0b3d91;
+    background:white;
+    padding:40px 25px;
+    width:280px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+    border-top:4px solid #d4af37;
+}
+
+.card:hover{
+    transform:translateY(-8px);
 }
 
 .card h3{
-  color:#0b3d91;
-  animation:slideText 3s ease-in-out infinite alternate;
+    margin-bottom:15px;
+    color:#1e3a8a;
 }
 
-@keyframes slideText{
-  from{transform:translateX(0);}
-  to{transform:translateX(8px);}
+.card p{
+    font-size:14px;
+    color:#555;
 }
 
-.card p{ color:#475569; }
-
-.btn{
-  margin-top:10px;
-  padding:7px 12px;
-  background:#0b3d91;
-  color:white;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
+/* ABOUT */
+.about{
+    background:#ffffff;
+    padding:70px 15%;
+    text-align:center;
 }
 
-.more-text{
-  display:none;
-  margin-top:10px;
-  color:#334155;
+.about h2{
+    color:#1e3a8a;
+    margin-bottom:20px;
 }
 
-/* RIGHT SIDE FIX */
-.school-info{
-  flex:1;
-  display:grid; 
-  grid-template-rows: repeat(2, auto);
-  gap:20px;
-  justify-items: stretch;
-  align-content: start;
-  margin-top:50px;
+.about p{
+    color:#555;
+    line-height:1.6;
 }
 
-.school-card{
-  background:white;
-  padding:15px;
-  border-radius:10px;
-  box-shadow:0 3px 8px rgba(0,0,0,0.1);
-  border-top:4px solid #0b3d91;
-  
-  min-height:220px;  
-  max-height:350px;  
-  overflow:auto; /* scroll if content too long */
-}
 
-.school-card h2{
-  color:#0b3d91;
-  margin-bottom:8px;
-}
-
-.school-card ul{
-  margin-top:10px;
-  padding-left:18px;
-  color:#334155;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .main{
-    flex-direction:column;
-  }
-  .school-info{
-    margin-top:0; 
-  }
-  .navbar{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .nav-right{
-    flex-direction:column;
-    gap:10px;
-    align-items:flex-start;
-  }
+footer{
+    background:#0f1e4d;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="navbar">
-  <div class="logo">
-    <img src="https://files.lamparaschool.ph/lampara/sms/school_site/logo/05fdf8-nsdaps.png" alt="A.L.P.S logo">
+<nav>
     <h2>A.L.P.S</h2>
-  </div>
-
-  <div class="nav-right">
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Subjects</a>
-      <a href="#">Facilities</a>
-      <a href="#">About</a>
-    </div>
-    <a href="index.html" class="logout">Logout</a>
-  </div>
-</div>
-</header>
-
-<div class="container">
+    <ul>
+        <li>Home</li>
+        <li>Subjects</li>
+        <li>Facilities</li>
+        <li>About</li>
+    </ul>
+</nav>
 
 <section class="hero">
-<h1>WELCOME TO AQUINAS LEARNING PORTAL SYSTEM</h1>
-<p>Explore our academic programs, facilities, and school history.</p>
+    <h1>Welcome to Aquinas Learning Portal</h1>
+    <p>Faith. Excellence. Wisdom.</p>
+    <button>Explore Now</button>
 </section>
 
-<div class="main">
+<section class="section">
+    <h2>Quick Access</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Subjects</h3>
+            <p>Browse academic programs guided by faith and reason.</p>
+        </div>
+        <div class="card">
+            <h3>Facilities</h3>
+            <p>Discover learning spaces designed for holistic growth.</p>
+        </div>
+        <div class="card">
+            <h3>School History</h3>
+            <p>Learn about our Catholic heritage and tradition.</p>
+        </div>
+    </div>
+</section>
 
-<div class="subjects">
-<h2>Our Subjects</h2>
-<div class="subject-grid">
+<section class="about">
+    <h2>Our Mission</h2>
+    <p>
+        Inspired by St. Thomas Aquinas and rooted in Catholic values,
+        Nuestra Señora de Aranzazu Parochial School is committed to
+        nurturing students through faith, wisdom, and academic excellence.
+    </p>
+</section>
 
-<div class="card">
-  <h3>Mathematics</h3>
-  <p>Problem solving and logical thinking are emphasized in every lesson.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Algebra, geometry, statistics, and calculus fundamentals are covered to strengthen critical thinking and analytical skills.</div>
-</div>
-
-<div class="card">
-  <h3>English</h3>
-  <p>Develop communication, comprehension, and literature appreciation.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Focus on grammar, creative writing, reading comprehension, speech, and literary analysis to enhance language proficiency.</div>
-</div>
-
-<div class="card">
-  <h3>Science</h3>
-  <p>Encourage exploration and understanding of the natural world.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Includes biology, chemistry, physics, and environmental science with experiments and projects to develop inquiry-based learning.</div>
-</div>
-
-<div class="card">
-  <h3>Filipino</h3>
-  <p>Study of language, culture, and communication skills.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Covers Filipino grammar, literature, oral communication, and appreciation of Philippine culture and history.</div>
-</div>
-
-<div class="card">
-  <h3>ICT</h3>
-  <p>Develop computer literacy and technological skills.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Covers basic programming, digital literacy, computer applications, and safe internet practices.</div>
-</div>
-
-<div class="card">
-  <h3>TLE</h3>
-  <p>Practical livelihood and technical skills for real-life application.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Includes cooking, woodworking, electronics, home economics, and other hands-on activities to build skills for future careers.</div>
-</div>
-
-<div class="card">
-  <h3>VE / CL</h3>
-  <p>Character building and values education.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Covers moral development, community service, leadership, and decision-making skills to nurture responsible citizens.</div>
-</div>
-
-<div class="card">
-  <h3>MAPEH</h3>
-  <p>Integration of music, arts, physical education, and health.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Encourages creativity, fitness, sportsmanship, personal hygiene, and overall wellness through practical and theoretical lessons.</div>
-</div>
-
-<div class="card">
-  <h3>Technical Writing</h3>
-  <p>Develop professional writing skills for formal contexts.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Covers report writing, documentation, instructions, and other professional communication formats used in academic and workplace settings.</div>
-</div>
-
-<div class="card">
-  <h3>Araling Panlipunan</h3>
-  <p>Study of Philippine society, history, and governance.</p>
-  <button class="btn" onclick="toggleText(this)">Learn More</button>
-  <div class="more-text">Includes Philippine history, geography, culture, government, and civic responsibilities to promote national awareness and social understanding.</div>
-</div>
-
-</div>
-</div>
-
-
-<div class="school-info">
-
-<div class="school-card">
-<h2>School History</h2>
-<button class="btn" onclick="toggleText(this)">Learn History</button>
-<div class="more-text">
-Nuestra Señora de Aranzazu Parochial School (NSDAPS) was founded in 1968 as a small parochial institution dedicated to providing quality Catholic education. Over the decades, the school has expanded to include modern classrooms, laboratories, and a variety of academic programs. It emphasizes holistic development, strong moral values, and community service. Today, NSDAPS continues to serve as a beacon of learning and faith in the community, nurturing generations of students in academics, arts, and leadership.
-</div>
-</div>
-
-<div class="school-card">
-<h2>Facilities</h2>
-<button class="btn" onclick="toggleText(this)">View Facilities</button>
-<div class="more-text">
-<ul>
-<li>Library</li>
-<li>Computer Lab</li>
-<li>Science Lab</li>
-<li>Gymnasium</li>
-<li>Canteen</li>
-<li>Auditorium</li>
-</ul>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-
-<script>
-function toggleText(btn){
-  const t = btn.nextElementSibling;
-  t.style.display = t.style.display === "block" ? "none" : "block";
-}
-</script>
+<footer>
+    © 2026 Aquinas Learning Portal System | Faith & Knowledge
+</footer>
 
 </body>
 </html>
+
 
 
 
