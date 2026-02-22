@@ -1,81 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A.L.P.S Login</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:"Inter",sans-serif;
-}
-
-html,body{
-  margin:0;
-  padding:0;
-  height:100%;
-}
-
-body{
-  background:linear-gradient(135deg,#0f1e4d,#1e3a8a);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.login-box{
-  background:white;
-  padding:40px;
-  width:100%;
-  max-width:350px;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-.login-box h2{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-input{
-  width:100%;
-  padding:10px;
-  margin:10px 0;
-  border-radius:6px;
-  border:1px solid #ccc;
-}
-
-button{
-  width:100%;
-  padding:12px;
-  background:#1e2a44;
-  color:white;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.switch{
-  margin-top:15px;
-  text-align:center;
-}
-
-.switch a{
-  cursor:pointer;
-  text-decoration:underline;
-}
+  * {
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #0f1e4d, #1e3a8a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+  }
+  .login-box {
+    background: white;
+    padding: 40px;
+    width: 100%;
+    max-width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  .login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #1e2a44;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .switch {
+    margin-top: 15px;
+    text-align: center;
+  }
+  .switch a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 </style>
 </head>
-
 <body>
 
 <div class="login-box" id="loginBox">
   <h2>Student Login</h2>
-  <input type="text" id="loginUser" placeholder="Username">
-  <input type="password" id="loginPass" placeholder="Password">
+  <input type="text" id="loginUser" placeholder="Username" />
+  <input type="password" id="loginPass" placeholder="Password" />
   <button onclick="login()">Log In</button>
-
   <div class="switch">
     No account? <a onclick="showSignup()">Sign Up</a>
   </div>
@@ -83,75 +73,59 @@ button{
 
 <div class="login-box" id="signupBox" style="display:none;">
   <h2>Create Account</h2>
-  <input type="text" id="signupUser" placeholder="Username">
-  <input type="password" id="signupPass" placeholder="Password">
+  <input type="text" id="signupUser" placeholder="Username" />
+  <input type="password" id="signupPass" placeholder="Password" />
   <button onclick="signUp()">Create Account</button>
-
   <div class="switch">
     Already have an account? <a onclick="showLogin()">Log In</a>
   </div>
 </div>
 
 <script>
+  // If already logged in, go to home
+  if (localStorage.getItem("loggedIn") === "true") {
+    window.location.href = "./home.html";
+  }
 
-// If already logged in → go to home
-if(localStorage.getItem("loggedIn") === "true"){
-    window.location.href = "./new-1.html";
-}
+  function showSignup() {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("signupBox").style.display = "block";
+  }
 
-function showSignup(){
-    document.getElementById("loginBox").style.display="none";
-    document.getElementById("signupBox").style.display="block";
-}
+  function showLogin() {
+    document.getElementById("signupBox").style.display = "none";
+    document.getElementById("loginBox").style.display = "block";
+  }
 
-function showLogin(){
-    document.getElementById("signupBox").style.display="none";
-    document.getElementById("loginBox").style.display="block";
-}
+  function signUp() {
+    const user = document.getElementById("signupUser").value.trim();
+    const pass = document.getElementById("signupPass").value.trim();
 
-function signUp(){
-    const user = document.getElementById("signupUser").value;
-    const pass = document.getElementById("signupPass").value;
-
-    if(user && pass){
-        localStorage.setItem("username", user);
-        localStorage.setItem("password", pass);
-        alert("Account created successfully!");
-        showLogin();
+    if (user && pass) {
+      localStorage.setItem("username", user);
+      localStorage.setItem("password", pass);
+      alert("Account created successfully!");
+      showLogin();
     } else {
-        alert("Please fill in all fields.");
+      alert("Please fill in all fields.");
     }
-}
+  }
 
-function login(){
-    const user = document.getElementById("loginUser").value;
-    const pass = document.getElementById("loginPass").value;
+  function login() {
+    const user = document.getElementById("loginUser").value.trim();
+    const pass = document.getElementById("loginPass").value.trim();
 
     const savedUser = localStorage.getItem("username");
     const savedPass = localStorage.getItem("password");
 
-    if(user === savedUser && pass === savedPass){
-        localStorage.setItem("loggedIn", "true");
-        window.location.href = "./new-1.html";
+    if (user === savedUser && pass === savedPass) {
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "./home.html";
     } else {
-        alert("Incorrect username or password.");
+      alert("Incorrect username or password.");
     }
-}
-
+  }
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
