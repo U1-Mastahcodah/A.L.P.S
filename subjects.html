@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Subjects - Aquinas Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background:#f2f2f2;
+  color:#132340;
+}
+
+
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:#1e3a8a;
+  color:white;
+}
+
+header h2 {
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+nav a {
+  margin-left:25px;
+  text-decoration:none;
+  color:white;
+  font-size:16px;
+  padding:6px 14px;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+nav a.active, nav a:hover {
+  background:#d4af37;
+  color:#0f1e4d;
+}
+
+
+.title-bar {
+  padding:20px 40px;
+  font-size:28px;
+  font-weight:bold;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.search-box {
+  width:250px;
+  padding:8px 12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+
+.subject-container {
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  padding:30px 40px;
+}
+
+.subject-item {
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  background:white;
+  border-radius:12px;
+  padding:25px 30px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition:0.3s;
+  cursor:pointer;
+  flex-wrap:wrap;
+}
+
+.subject-item:hover {
+  background:#d4af37;
+  color:#0f1e4d;
+}
+
+.subject-left {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.subject-name {
+  font-size:24px;
+  font-weight:600;
+}
+
+.subject-desc {
+  font-size:16px;
+  color:#506288;
+  transition:color 0.3s;
+}
+
+.subject-item:hover .subject-desc {
+  color:#132340;
+}
+
+.toggle-branches {
+  margin-top:10px;
+  display:none;
+  flex-direction:column;
+  gap:5px;
+}
+
+.toggle-branches div {
+  background:#e7ebf0;
+  padding:6px 10px;
+  border-radius:6px;
+}
+
+footer {
+  text-align:center;
+  padding:20px;
+  background:#1e3a8a;
+  color:white;
+  margin-top:40px;
+  font-size:14px;
+}
+
+@media(max-width:800px){
+  .subject-container{
+    padding:20px;
+  }
+  .subject-item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .search-box{
+    width:100%;
+    margin-top:10px;
+  }
+}
+</style>
+</head>
+<body>
+
+
+<header>
+  <h2>A.L.P.S</h2>
+  <nav>
+    <a href="Home.html">Home</a>
+    <a href="Subjects.html" class="active">Subjects</a>
+    <a href="#">Facilities</a>
+    <a href="#">About</a>
+    <a href="index.html">Log Out</a>
+  </nav>
+</header>
+
+
+<div class="title-bar">
+  Subjects
+  <input type="text" class="search-box" placeholder="Search subjects..." onkeyup="filterSubjects()">
+</div>
+
+
+<div class="subject-container" id="subjectContainer">
+
+  <div class="subject-item" data-name="Math">
+    <div class="subject-left">
+      <div class="subject-name">Math</div>
+      <div class="subject-desc">Explore numbers, equations, and problem solving.</div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="Science" onclick="toggleBranches(this)">
+    <div class="subject-left">
+      <div class="subject-name">Science</div>
+      <div class="subject-desc">Explore Biology, Chemistry, and Physics.</div>
+      <div class="toggle-branches">
+        <div>Biology</div>
+        <div>Chemistry</div>
+        <div>Physics</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="English">
+    <div class="subject-left">
+      <div class="subject-name">English</div>
+      <div class="subject-desc">Improve reading, writing, and communication skills.</div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="Araling Panlipunan">
+    <div class="subject-left">
+      <div class="subject-name">Araling Panlipunan</div>
+      <div class="subject-desc">Learn history, culture, and society.</div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="VECL">
+    <div class="subject-left">
+      <div class="subject-name">VECL</div>
+      <div class="subject-desc">Values Education and Christian Living studies.</div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="Filipino">
+    <div class="subject-left">
+      <div class="subject-name">Filipino</div>
+      <div class="subject-desc">Develop language and literature skills in Filipino.</div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="MAPEH" onclick="toggleBranches(this)">
+    <div class="subject-left">
+      <div class="subject-name">MAPEH</div>
+      <div class="subject-desc">Music, Arts, PE, and Health</div>
+      <div class="toggle-branches">
+        <div>Music</div>
+        <div>Arts</div>
+        <div>PE</div>
+        <div>Health</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="Technical Writing">
+    <div class="subject-left">
+      <div class="subject-name">Technical Writing</div>
+      <div class="subject-desc">Practice structured professional writing.</div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="ICT">
+    <div class="subject-left">
+      <div class="subject-name">ICT</div>
+      <div class="subject-desc">Information and Communication Technology.</div>
+    </div>
+  </div>
+
+  <div class="subject-item" data-name="TLE" onclick="toggleBranches(this)">
+    <div class="subject-left">
+      <div class="subject-name">TLE</div>
+      <div class="subject-desc">Explore Programming, Home Economics, and Industrial Arts.</div>
+      <div class="toggle-branches">
+        <div>Programming</div>
+        <div>Home Economics</div>
+        <div>Industrial Arts</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<footer>
+  @ 2026 Aquinas Learning Portal System | Faith & Knowledge
+</footer>
+
+<script>
+
+function filterSubjects(){
+  const input = document.querySelector('.search-box').value.toLowerCase();
+  const items = document.querySelectorAll('.subject-item');
+  items.forEach(item => {
+    const name = item.getAttribute('data-name').toLowerCase();
+    if(name.includes(input)){
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// Toggle branches
+function toggleBranches(card){
+  const branches = card.querySelector('.toggle-branches');
+  if(branches){
+    branches.style.display = (branches.style.display === 'flex') ? 'none' : 'flex';
+  }
+}
+
+
+window.onload = function(){
+  if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "./index.html";
+  }
+}
+</script>
+</body>
+</html>
