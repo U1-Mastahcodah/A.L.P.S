@@ -1,90 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A.L.P.S Home</title>
+
 <style>
-body{ margin:0; font-family:'Segoe UI',sans-serif; background:#0f1e4d; color:white; scroll-behavior:smooth; }
-nav{ background: rgba(10,20,60,0.95); padding:15px 60px; display:flex; justify-content:space-between; align-items:center; }
-nav h2{ font-weight:600; letter-spacing:1px; }
-nav ul{ list-style:none; display:flex; gap:25px; }
-nav ul li{ cursor:pointer; font-size:14px; }
-nav ul li:hover{ color:#d4af37; }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
 
-.welcome-box{ text-align:center; background: rgba(255,255,255,0.2); backdrop-filter:blur(8px); padding:40px 20px; margin:30px auto; border-radius:15px; max-width:900px; box-shadow:0 4px 20px rgba(0,0,0,0.2); }
-.welcome-box h1{ font-size:36px; margin-bottom:15px; }
-.welcome-box p{ font-size:18px; opacity:0.9; line-height:1.5; }
+body{
+  background: linear-gradient(135deg, #0f1e4d, #1e3a8a, #d4af37);
+  color:#333;
+}
 
-.cards-section{ padding:60px 10%; display:flex; justify-content:center; gap:40px; flex-wrap:wrap; }
-.card{ background:white; color:#132340; padding:40px 25px; width:280px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.08); border-top:4px solid #d4af37; cursor:pointer; transition:0.3s; }
-.card:hover{ transform:translateY(-8px); }
-.card h3{ margin-bottom:15px; }
-.card p{ font-size:14px; line-height:1.5; }
+/* NAVBAR */
+nav{
+  background: rgba(10,20,60,0.95);
+  padding:15px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+}
 
-footer{ background:#0f1e4d; color:white; text-align:center; padding:20px; font-size:14px; }
+nav h2{
+  font-weight:600;
+  letter-spacing:1px;
+}
 
-@media(max-width:768px){
-  nav{ padding:15px 20px; }
-  .welcome-box h1{ font-size:28px; }
-  .welcome-box p{ font-size:16px; }
-  .cards-section{ flex-direction:column; gap:20px; align-items:center; }
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:25px;
+}
+
+nav ul li{
+  cursor:pointer;
+  font-size:14px;
+  transition:0.3s;
+}
+
+nav ul li:hover{
+  color:#d4af37;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:120px 20px;
+  color:white;
+}
+
+.hero h1{
+  font-size:40px;
+  margin-bottom:15px;
+  font-weight:600;
+}
+
+.hero p{
+  font-size:16px;
+  margin-bottom:30px;
+  opacity:0.9;
+}
+
+.hero button{
+  padding:12px 30px;
+  border:none;
+  background:#d4af37;
+  color:#0f1e4d;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.hero button:hover{
+  background:#f0c95e;
+}
+
+/* CONTENT SECTION */
+.section{
+  background:#fdf8ec;
+  padding:80px 10%;
+  text-align:center;
+  border-top-left-radius:40px;
+  border-top-right-radius:40px;
+}
+
+.section h2{
+  margin-bottom:40px;
+  color:#1e3a8a;
+}
+
+/* CARDS */
+.cards{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.card{
+  background:white;
+  padding:40px 25px;
+  width:280px;
+  border-radius:15px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  transition:0.3s;
+  border-top:4px solid #d4af37;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card h3{
+  margin-bottom:15px;
+  color:#1e3a8a;
+}
+
+.card p{
+  font-size:14px;
+  color:#555;
+}
+
+/* ABOUT */
+.about{
+  background:#ffffff;
+  padding:70px 15%;
+  text-align:center;
+}
+
+.about h2{
+  color:#1e3a8a;
+  margin-bottom:20px;
+}
+
+.about p{
+  color:#555;
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+  background:#0f1e4d;
+  color:white;
+  text-align:center;
+  padding:20px;
+  font-size:14px;
 }
 </style>
 </head>
+
 <body>
 
 <nav>
-  <h2>A.L.P.S</h2>
-  <ul>
-    <li onclick="scrollToCard(0)">Subjects</li>
-    <li onclick="scrollToCard(1)">Facilities</li>
-    <li onclick="scrollToCard(2)">About</li>
-    <li><a href="#" onclick="logout()" style="color:white; text-decoration:none;">Log Out</a></li>
-  </ul>
+    <h2>A.L.P.S</h2>
+    <ul>
+        <li>Home</li>
+        <li>Subjects</li>
+        <li>Facilities</li>
+        <li>About</li>
+        <li><a href="#" style="color:white; text-decoration:none;" onclick="logout()">Log Out</a></li>
+    </ul>
 </nav>
 
-<div class="welcome-box">
-  <h1>Welcome to Aquinas Learning Portal</h1>
-  <p>Access your subjects, facilities, announcements, and school information. Log in to explore everything our portal offers!</p>
-</div>
+<section class="hero">
+    <h1>Welcome to Aquinas Learning Portal</h1>
+    <p>Faith. Excellence. Wisdom.</p>
+    <button onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">Explore Now</button>
+</section>
 
-<section class="cards-section">
-  <div class="card" id="subjectsCard">
-    <h3>Subjects</h3>
-    <p>Browse academic programs guided by faith and reason. Track your enrolled subjects and progress seamlessly.</p>
-  </div>
-  <div class="card" id="facilitiesCard">
-    <h3>Facilities</h3>
-    <p>Explore our learning spaces, laboratories, library, and interactive classrooms designed for holistic development.</p>
-  </div>
-  <div class="card" id="aboutCard">
-    <h3>About</h3>
-    <p>Learn about our Catholic heritage, mission inspired by St. Thomas Aquinas, and commitment to student excellence.</p>
-  </div>
+<section class="section">
+    <h2>Quick Access</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Subjects</h3>
+            <p>Browse academic programs guided by faith and reason.</p>
+        </div>
+        <div class="card">
+            <h3>Facilities</h3>
+            <p>Discover learning spaces designed for holistic growth.</p>
+        </div>
+        <div class="card">
+            <h3>School History</h3>
+            <p>Learn about our Catholic heritage and tradition.</p>
+        </div>
+    </div>
+</section>
+
+<section class="about">
+    <h2>Our Mission</h2>
+    <p>
+        Inspired by St. Thomas Aquinas and rooted in Catholic values,
+        Nuestra Señora de Aranzazu Parochial School is committed to
+        nurturing students through faith, wisdom, and academic excellence.
+    </p>
 </section>
 
 <footer>
-  © 2026 Aquinas Learning Portal System | Faith & Knowledge
+    © 2026 Aquinas Learning Portal System | Faith & Knowledge
 </footer>
 
 <script>
-// Redirect to login if not logged in
-window.onload = function(){
-  if(localStorage.getItem("loggedIn")!=="true"){
-    window.location.href="./index.html";
+  // Redirect to login if not logged in
+  window.onload = function(){
+    if(localStorage.getItem("loggedIn") !== "true"){
+      window.location.href = "index.html";
+    }
   }
-}
 
-function logout(){
-  localStorage.removeItem("loggedIn");
-  window.location.href="./index.html";
-}
-
-function scrollToCard(index){
-  const cards = document.querySelectorAll('.card');
-  if(cards[index]) cards[index].scrollIntoView({behavior:'smooth', block:'center'});
-}
+  function logout(){
+    localStorage.removeItem("loggedIn");
+    window.location.href = "index.html";
+  }
 </script>
 
 </body>
