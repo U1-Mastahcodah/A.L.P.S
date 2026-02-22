@@ -2,206 +2,123 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A.L.P.S Login</title>
 
 <style>
 *{
   box-sizing:border-box;
-  font-family:"Inter",sans-serif;
+  font-family:'Inter',sans-serif;
+  margin:0;
+  padding:0;
 }
 
 html, body{
-  margin:0;
-  padding:0;
   height:100%;
-  background:#e7ebf0;
-  overflow-x:hidden;
+  width:100%;
+  overflow:hidden;
 }
 
-/* BACKGROUND VIDEO */
+/* Background Video */
 #bgVideo {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
   object-fit:cover;
   z-index:-1;
-  opacity:0.7; /* slightly dim for readability */
+  opacity:0.5; /* slightly dimmed so login is readable */
 }
 
-/* NAVBAR */
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 24px;
-  background:rgba(255,255,255,0.85);
-  border-bottom:1px solid #d1d9e6;
-  flex-wrap:wrap;
-  position:relative;
-  z-index:2;
-}
-
-.logo{
+/* Logo on top */
+.logo {
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
   display:flex;
   align-items:center;
   gap:10px;
+  z-index:2;
 }
 
 .logo img{
-  height:36px;
+  height:50px;
   width:auto;
-  object-fit:contain;
 }
 
 .logo span{
   font-weight:bold;
-  font-size:24px;
+  font-size:28px;
+  color:white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-.nav-links a,
-.nav-links button{
-  margin-left:12px;
-  color:#506288;
-  text-decoration:none;
-  background:none;
-  border:none;
-  cursor:pointer;
-}
-
-.signup-btn{
-  padding:8px 14px;
-  border-radius:6px;
-  background:#ced6e0;
-  border:1px solid #a0adc3;
-}
-
-.signup-underline {
-  text-decoration: underline !important;
-}
-
-/* CONTAINER */
-.container{
-  display:flex;
-  min-height:calc(100vh - 62px);
-  align-items:center;
-  justify-content:flex-start;
-}
-
-/* SIDEBAR LOGIN */
-.sidebar{
-  width:320px;
-  background:rgba(247,249,252,0.95);
-  padding:30px 25px;
-  border-right:1px solid #d1d9e6;
+/* Centered login box */
+.login-box{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:350px;
+  background: rgba(255,255,255,0.95);
+  padding:40px 30px;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.2);
+  z-index:2;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  height:85vh; /* taller login */
-  border-radius:12px;
 }
 
-.hidden{
-  display:none !important;
-}
-
-label{
-  margin-top:14px;
-  display:block;
-}
-
-input{
-  width:100%;
-  padding:10px;
-  margin-top:6px;
-  border-radius:6px;
-  border:1px solid #a0adc3;
-}
-
-.sidebar button{
-  width:100%;
-  margin-top:22px;
-  padding:12px;
-  background:#1e2a44;
-  color:white;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.switch{
-  margin-top:16px;
+.login-box h2{
+  color:#1e3a8a;
+  margin-bottom:20px;
   text-align:center;
 }
 
-/* WELCOME PANEL */
-.welcome-panel{
-  flex:1;
-  padding:40px 50px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:flex-start;
-  background: rgba(255,255,255,0.85); /* white + semi-transparent */
-  border-radius:12px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.1);
-  color:#132340;
+.login-box input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:6px;
+  border:1px solid #ccc;
 }
 
-.welcome-panel h1{
-  font-size:36px;
-  margin:0 0 15px 0;
+.login-box button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  background:#d4af37;
+  color:#0f1e4d;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-.welcome-panel p{
-  font-size:18px;
-  max-width:700px;
-  line-height:1.5;
-  margin:0;
+.login-box button:hover{
+  background:#f0c95e;
 }
 
-/* MAIN CONTENT AFTER LOGIN */
-.main{
-  flex:1;
-  display:none;
-  flex-direction:column;
-  padding:40px 50px;
-  background:white;
+.login-box .switch{
+  margin-top:15px;
+  font-size:14px;
+  text-align:center;
 }
 
-.page{display:none;}
-.page.active{display:block;}
+.login-box .switch a{
+  color:#1e3a8a;
+  text-decoration:underline;
+  cursor:pointer;
+}
 
-/* MOBILE */
-@media(max-width:900px){
-  .container{
-    flex-direction:column;
-    align-items:center;
-    padding:20px;
-  }
-
-  .sidebar{
+/* Responsive */
+@media(max-width:500px){
+  .login-box{
     width:90%;
-    height:auto;
-    border-right:none;
-    border-bottom:1px solid #d1d9e6;
-    margin-bottom:20px;
+    padding:30px 20px;
   }
-
-  .welcome-panel{
-    width:90%;
-    padding:25px;
-    border-radius:12px;
-  }
-
-  .welcome-panel h1{
-    font-size:28px;
-  }
-
-  .welcome-panel p{
-    font-size:16px;
+  .logo span{
+    font-size:24px;
   }
 }
 </style>
@@ -209,137 +126,87 @@ input{
 
 <body>
 
-<!-- Background Video -->
+<!-- Background video -->
 <video autoplay loop muted playsinline id="bgVideo">
   <source src="https://nsdaps.lamparasystem.com/BGvideo.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
 </video>
 
-<div class="navbar">
-  <div class="logo">
-    <img src="https://nsdaps.lamparasystem.com/logo.png" alt="A.L.P.S Logo">
-    <span>A.L.P.S</span>
-  </div>
+<!-- Logo -->
+<div class="logo">
+  <img src="https://nsdaps.lamparasystem.com/logo.png" alt="A.L.P.S Logo">
+  <span>A.L.P.S</span>
+</div>
 
-  <div class="nav-links">
-    <a onclick="showPage('home')">Home</a>
-    <a onclick="showPage('subjects')">Subjects</a>
-    <a onclick="showPage('facilities')">Facilities</a>
-    <a onclick="showPage('about')">About</a>
-
-    <button class="signup-btn signup-underline" onclick="showSignup()">Sign up</button>
+<!-- Login box -->
+<div class="login-box" id="loginBox">
+  <h2>Student Login</h2>
+  <input type="text" id="loginUser" placeholder="Username">
+  <input type="password" id="loginPass" placeholder="Password">
+  <button onclick="login()">Log in</button>
+  <div class="switch">
+    Don’t have an account? <a onclick="showSignup()">Sign up</a>
   </div>
 </div>
 
-<div class="container">
-
-  <!-- LOGIN -->
-  <div class="sidebar" id="loginBox">
-    <h2>Student Login</h2>
-
-    <label>Username</label>
-    <input type="text" id="loginUser">
-
-    <label>Password</label>
-    <input type="password" id="loginPass">
-
-    <button onclick="login()">Log in</button>
-
-    <div class="switch">
-      Don’t have an account?
-      <a class="signup-underline" onclick="showSignup()">Sign up</a>
-    </div>
+<!-- Sign-up box hidden initially -->
+<div class="login-box hidden" id="signupBox">
+  <h2>Create Account</h2>
+  <input type="text" id="signupUser" placeholder="Username">
+  <input type="password" id="signupPass" placeholder="Password">
+  <button onclick="signUp()">Sign Up</button>
+  <div class="switch">
+    Already have an account? <a onclick="showLogin()">Log in</a>
   </div>
-
-  <!-- SIGN UP -->
-  <div class="sidebar hidden" id="signupBox">
-    <h2>Create Account</h2>
-
-    <label>Username</label>
-    <input type="text" id="signupUser">
-
-    <label>Password</label>
-    <input type="password" id="signupPass">
-
-    <button onclick="signUp()">Create account</button>
-
-    <div class="switch">
-      Already have an account?
-      <a onclick="showLogin()">Log in</a>
-    </div>
-  </div>
-
-  <!-- WELCOME PANEL -->
-  <div class="welcome-panel" id="welcomePanel">
-    <h1>Welcome to Aquinas Learning Portal System</h1>
-    <p>
-      Access your subjects, facilities, announcements, and school information.
-      Please log in or create an account to continue.
-    </p>
-  </div>
-
-  <!-- MAIN CONTENT AFTER LOGIN -->
-  <div class="main" id="mainContent">
-    <div class="page active" id="home">
-      <h1>Welcome</h1>
-    </div>
-    <div class="page" id="subjects"><h1>Subjects</h1></div>
-    <div class="page" id="facilities"><h1>Facilities</h1></div>
-    <div class="page" id="about"><h1>About</h1></div>
-  </div>
-
 </div>
 
 <script>
-const loginBox    = document.getElementById('loginBox');
-const signupBox   = document.getElementById('signupBox');
-const welcomePanel= document.getElementById('welcomePanel');
-const mainContent = document.getElementById('mainContent');
-const loginUser   = document.getElementById('loginUser');
-const loginPass   = document.getElementById('loginPass');
-const signupUser  = document.getElementById('signupUser');
-const signupPass  = document.getElementById('signupPass');
+const loginBox = document.getElementById('loginBox');
+const signupBox = document.getElementById('signupBox');
+const loginUser = document.getElementById('loginUser');
+const loginPass = document.getElementById('loginPass');
+const signupUser = document.getElementById('signupUser');
+const signupPass = document.getElementById('signupPass');
 
 function showSignup(){
-  loginBox.classList.add("hidden");
-  signupBox.classList.remove("hidden");
+  loginBox.classList.add('hidden');
+  signupBox.classList.remove('hidden');
 }
 
 function showLogin(){
-  signupBox.classList.add("hidden");
-  loginBox.classList.remove("hidden");
+  signupBox.classList.add('hidden');
+  loginBox.classList.remove('hidden');
 }
 
 function signUp(){
-  localStorage.setItem("username", signupUser.value);
-  localStorage.setItem("password", signupPass.value);
-  alert("Account created!");
-  showLogin();
-}
-
-function login(){
-  if(
-    loginUser.value === localStorage.getItem("username") &&
-    loginPass.value === localStorage.getItem("password")
-  ){
-    loginBox.style.display = "none";
-    signupBox.style.display = "none";
-    welcomePanel.style.display = "none";
-    mainContent.style.display = "flex";
-    showPage('home');
-  }else{
-    alert("Incorrect username or password");
+  const user = signupUser.value.trim();
+  const pass = signupPass.value.trim();
+  if(user && pass){
+    localStorage.setItem('username', user);
+    localStorage.setItem('password', pass);
+    alert("Account created!");
+    showLogin();
+  } else {
+    alert("Please fill in all fields.");
   }
 }
 
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const target = document.getElementById(id);
-  if(target){
-    target.classList.add('active');
+function login(){
+  const user = loginUser.value.trim();
+  const pass = loginPass.value.trim();
+  const savedUser = localStorage.getItem('username');
+  const savedPass = localStorage.getItem('password');
+
+  if(user===savedUser && pass===savedPass){
+    alert("Login successful!");
+    // redirect or show main content
+  } else {
+    alert("Incorrect username or password");
   }
 }
 </script>
 
 </body>
 </html>
+
 
