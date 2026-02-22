@@ -19,7 +19,6 @@ body, html {
   overflow: hidden;
 }
 
-/* Background video */
 video#bgVideo {
   position: fixed;
   top: 0;
@@ -30,7 +29,7 @@ video#bgVideo {
   z-index: -1;
 }
 
-/* Logo top-left */
+
 .logo {
   position: fixed;
   top: 15px;
@@ -52,14 +51,14 @@ video#bgVideo {
   letter-spacing: 1px;
 }
 
-/* Container for login + welcome panel */
+
 .container {
   display: flex;
   height: 100vh;
   width: 100%;
 }
 
-/* Sidebar: login/sign-up */
+
 .sidebar {
   width: 30%;
   max-width: 350px;
@@ -112,7 +111,7 @@ video#bgVideo {
   text-decoration: underline;
 }
 
-/* Welcome panel on right side */
+
 .welcome-panel {
   flex: 1;
   display: flex;
@@ -120,7 +119,7 @@ video#bgVideo {
   align-items: center;
   color: white;
   padding: 40px;
-  background: rgba(0,0,0,0.2); /* semi overlay */
+  background: rgba(0,0,0,0.2); 
   text-align: center;
   flex-direction: column;
 }
@@ -135,7 +134,7 @@ video#bgVideo {
   max-width: 450px;
 }
 
-/* Responsive */
+
 @media(max-width: 900px){
   .container {
     flex-direction: column;
@@ -158,12 +157,11 @@ video#bgVideo {
 </head>
 <body>
 
-<!-- Background Video -->
 <video autoplay loop muted playsinline id="bgVideo">
   <source src="BGvideo.mp4" type="video/mp4">
 </video>
 
-<!-- Logo -->
+
 <div class="logo">
   <img src="logo.png" alt="A.L.P.S Logo">
   <span>A.L.P.S</span>
@@ -171,7 +169,6 @@ video#bgVideo {
 
 <div class="container">
 
-  <!-- Login box -->
   <div class="sidebar" id="loginBox">
     <h2>Student Login</h2>
     <input type="text" id="loginUser" placeholder="Username">
@@ -182,7 +179,7 @@ video#bgVideo {
     </div>
   </div>
 
-  <!-- Sign-up box -->
+ 
   <div class="sidebar" id="signupBox" style="display:none;">
     <h2>Create Account</h2>
     <input type="text" id="signupUser" placeholder="Username">
@@ -193,7 +190,7 @@ video#bgVideo {
     </div>
   </div>
 
-  <!-- Welcome Panel -->
+
   <div class="welcome-panel">
     <h1>Welcome to Aquinas Learning Portal System</h1>
     <p>Access your subjects, facilities, announcements, and school information. Please log in or create an account to continue.</p>
@@ -202,7 +199,7 @@ video#bgVideo {
 </div>
 
 <script>
-  // If already logged in, redirect to home
+
   if(localStorage.getItem("loggedIn") === "true"){
     window.location.href = "./home.html";
   }
@@ -248,3 +245,4 @@ video#bgVideo {
 
 </body>
 </html>
+
