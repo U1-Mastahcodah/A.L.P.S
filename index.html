@@ -1,74 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A.L.P.S Login</title>
-<style>
-*{ box-sizing:border-box; font-family:'Segoe UI',sans-serif; margin:0; padding:0; }
-body, html{ height:100%; width:100%; overflow:hidden; }
 
-#bgVideo{
+<style>
+*{
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+  margin:0;
+  padding:0;
+}
+
+body, html{
+  height:100%;
+  width:100%;
+  overflow:hidden;
+}
+
+/* Background Video */
+video#bgVideo{
   position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   object-fit:cover;
   z-index:-1;
 }
 
+/* Login Box */
 .container{
+  height:100%;
   display:flex;
-  height:100vh;
   justify-content:center;
   align-items:center;
 }
 
 .sidebar{
-  width:320px;
+  width:350px;
   background: rgba(255,255,255,0.95);
-  padding:30px 25px;
+  padding:40px 30px;
   border-radius:12px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.2);
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 
-input{ width:100%; padding:10px; margin-top:10px; border-radius:6px; border:1px solid #ccc; }
-button{ margin-top:15px; padding:12px; border:none; border-radius:6px; background:#1e2a44; color:white; cursor:pointer; }
-button:hover{ background:#132340; }
+.sidebar h2{
+  text-align:center;
+  color:#1e3a8a;
+  margin-bottom:25px;
+}
 
-.logo{ position:absolute; top:20px; left:20px; display:flex; align-items:center; gap:10px; color:white; font-weight:bold; font-size:24px; }
-.logo img{ height:40px; }
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
 
-.switch{ margin-top:12px; font-size:13px; text-align:center; }
-.switch a{ color:#1e3a8a; cursor:pointer; text-decoration:underline; }
+button{
+  width:100%;
+  padding:12px;
+  background:#d4af37;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+  margin-bottom:10px;
+}
+
+button:hover{
+  background:#f0c95e;
+}
+
+.switch{
+  text-align:center;
+  font-size:14px;
+}
+
+.switch a{
+  color:#1e3a8a;
+  cursor:pointer;
+  text-decoration:underline;
+}
+
 </style>
 </head>
+
 <body>
 
 <!-- Background Video -->
-<video autoplay loop muted playsinline id="bgVideo">
+<video autoplay muted loop playsinline id="bgVideo">
   <source src="BGvideo.mp4" type="video/mp4">
 </video>
 
-<!-- Logo -->
-<div class="logo">
-  <img src="https://nsdaps.lamparasystem.com/logo.png" alt="A.L.P.S Logo">
-  <span>A.L.P.S</span>
-</div>
-
 <div class="container">
+  <!-- Login Box -->
   <div class="sidebar" id="loginBox">
     <h2>Student Login</h2>
     <input type="text" id="loginUser" placeholder="Username">
     <input type="password" id="loginPass" placeholder="Password">
-    <button onclick="login()">Log In</button>
+    <button onclick="login()">Login</button>
     <div class="switch">
       Don’t have an account? <a onclick="showSignup()">Sign up</a>
     </div>
   </div>
 
+  <!-- Signup Box -->
   <div class="sidebar" id="signupBox" style="display:none;">
     <h2>Create Account</h2>
     <input type="text" id="signupUser" placeholder="Username">
@@ -99,8 +141,8 @@ function signUp(){
     localStorage.setItem("password", pass);
     alert("Account created successfully!");
     showLogin();
-  }else{
-    alert("Please fill all fields.");
+  } else {
+    alert("Please fill in all fields.");
   }
 }
 
@@ -110,20 +152,23 @@ function login(){
   const savedUser = localStorage.getItem("username");
   const savedPass = localStorage.getItem("password");
 
-  if(user===savedUser && pass===savedPass){
+  if(user === savedUser && pass === savedPass){
     localStorage.setItem("loggedIn","true");
-    window.location.href="./home.html"; // Redirect to homepage
-  }else{
-    alert("Incorrect username or password.");
+    window.location.href="home.html"; // redirect to home page
+  } else {
+    alert("Incorrect username or password");
   }
 }
 
-// Auto redirect if already logged in
-if(localStorage.getItem("loggedIn")==="true"){
-  window.location.href="./home.html";
+// redirect if already logged in
+window.onload = function(){
+  if(localStorage.getItem("loggedIn")==="true"){
+    window.location.href="home.html";
+  }
 }
 </script>
 
 </body>
 </html>
+
 
