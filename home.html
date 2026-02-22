@@ -1,98 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Aquinas Learning Portal</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
-}
-
-body{
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  body {
     background: linear-gradient(135deg, #0f1e4d, #1e3a8a, #d4af37);
-    color:#333;
-}
-
-nav{
-    background: rgba(10,20,60,0.95);
-    padding:15px 60px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-nav h2{
-    color:white;
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:25px;
-}
-
-nav ul li a{
-    color:white;
-    text-decoration:none;
-}
-
-.hero{
-    text-align:center;
-    padding:120px 20px;
-    color:white;
-}
-
-.hero h1{
-    font-size:40px;
-    margin-bottom:15px;
-}
-
-footer{
-    background:#0f1e4d;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
+    color: #333;
+  }
+  nav {
+    background: rgba(10, 20, 60, 0.95);
+    padding: 15px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav h2 {
+    color: white;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .hero {
+    text-align: center;
+    padding: 120px 20px;
+    color: white;
+  }
+  .hero h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+  footer {
+    background: #0f1e4d;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
 </style>
 </head>
-
 <body>
 
 <nav>
-    <h2>A.L.P.S</h2>
-    <ul>
-        <li><a href="#" onclick="logout()">Log Out</a></li>
-    </ul>
+  <h2>A.L.P.S</h2>
+  <ul>
+    <li><a href="#" onclick="logout()">Log Out</a></li>
+  </ul>
 </nav>
 
 <section class="hero">
-    <h1>Welcome to Aquinas Learning Portal</h1>
-    <p>Faith. Excellence. Wisdom.</p>
+  <h1>Welcome to Aquinas Learning Portal</h1>
+  <p>Faith. Excellence. Wisdom.</p>
 </section>
 
 <footer>
-    © 2026 Aquinas Learning Portal System
+  © 2026 Aquinas Learning Portal System
 </footer>
 
 <script>
-
-
-window.onload = function(){
-    if(localStorage.getItem("loggedIn") !== "true"){
-        window.location.href = "./indexc.html";
+ 
+  window.onload = function () {
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "./index.html";
     }
-}
+  };
 
-function logout(){
+  
+  function logout() {
     localStorage.removeItem("loggedIn");
-    window.location.href = "./indexc.html";
-}
-
+    window.location.href = "./index.html";
+  }
 </script>
 
 </body>
