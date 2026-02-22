@@ -16,6 +16,19 @@ html, body{
   padding:0;
   height:100%;
   background:#e7ebf0;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND VIDEO */
+#bgVideo {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-1;
+  opacity:0.7; /* slightly dim for readability */
 }
 
 /* NAVBAR */
@@ -24,9 +37,11 @@ html, body{
   justify-content:space-between;
   align-items:center;
   padding:16px 24px;
-  background:#fff;
+  background:rgba(255,255,255,0.85);
   border-bottom:1px solid #d1d9e6;
   flex-wrap:wrap;
+  position:relative;
+  z-index:2;
 }
 
 .logo{
@@ -78,13 +93,14 @@ html, body{
 /* SIDEBAR LOGIN */
 .sidebar{
   width:320px;
-  background:#f7f9fc;
+  background:rgba(247,249,252,0.95);
   padding:30px 25px;
   border-right:1px solid #d1d9e6;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  height:80vh; /* tall login */
+  height:85vh; /* taller login */
+  border-radius:12px;
 }
 
 .hidden{
@@ -128,7 +144,7 @@ input{
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background: rgba(255,255,255,0.85); /* white + slightly transparent */
+  background: rgba(255,255,255,0.85); /* white + semi-transparent */
   border-radius:12px;
   box-shadow:0 4px 20px rgba(0,0,0,0.1);
   color:#132340;
@@ -192,6 +208,11 @@ input{
 </head>
 
 <body>
+
+<!-- Background Video -->
+<video autoplay loop muted playsinline id="bgVideo">
+  <source src="https://nsdaps.lamparasystem.com/BGvideo.mp4" type="video/mp4">
+</video>
 
 <div class="navbar">
   <div class="logo">
