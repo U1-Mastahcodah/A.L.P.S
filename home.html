@@ -3,156 +3,156 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>A.L.P.S Home</title>
+<title>Aquinas Learning Portal</title>
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-  background: linear-gradient(135deg, #0f1e4d, #1e3a8a, #d4af37);
-  color:#333;
+    background: linear-gradient(135deg, #0f1e4d, #1e3a8a, #d4af37);
+    color:#333;
 }
 
 /* NAVBAR */
 nav{
-  background: rgba(10,20,60,0.95);
-  padding:15px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  color:white;
+    background: rgba(10,20,60,0.95);
+    padding:15px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
 }
 
 nav h2{
-  font-weight:600;
-  letter-spacing:1px;
+    font-weight:600;
+    letter-spacing:1px;
 }
 
 nav ul{
-  list-style:none;
-  display:flex;
-  gap:25px;
+    list-style:none;
+    display:flex;
+    gap:25px;
 }
 
 nav ul li{
-  cursor:pointer;
-  font-size:14px;
-  transition:0.3s;
+    cursor:pointer;
+    font-size:14px;
+    transition:0.3s;
 }
 
 nav ul li:hover{
-  color:#d4af37;
+    color:#d4af37;
 }
 
 /* HERO */
 .hero{
-  text-align:center;
-  padding:120px 20px;
-  color:white;
+    text-align:center;
+    padding:120px 20px;
+    color:white;
 }
 
 .hero h1{
-  font-size:40px;
-  margin-bottom:15px;
-  font-weight:600;
+    font-size:40px;
+    margin-bottom:15px;
+    font-weight:600;
 }
 
 .hero p{
-  font-size:16px;
-  margin-bottom:30px;
-  opacity:0.9;
+    font-size:16px;
+    margin-bottom:30px;
+    opacity:0.9;
 }
 
 .hero button{
-  padding:12px 30px;
-  border:none;
-  background:#d4af37;
-  color:#0f1e4d;
-  border-radius:6px;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.3s;
+    padding:12px 30px;
+    border:none;
+    background:#d4af37;
+    color:#0f1e4d;
+    border-radius:6px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
 }
 
 .hero button:hover{
-  background:#f0c95e;
+    background:#f0c95e;
 }
 
 /* CONTENT SECTION */
 .section{
-  background:#fdf8ec;
-  padding:80px 10%;
-  text-align:center;
-  border-top-left-radius:40px;
-  border-top-right-radius:40px;
+    background:#fdf8ec;
+    padding:80px 10%;
+    text-align:center;
+    border-top-left-radius:40px;
+    border-top-right-radius:40px;
 }
 
 .section h2{
-  margin-bottom:40px;
-  color:#1e3a8a;
+    margin-bottom:40px;
+    color:#1e3a8a;
 }
 
 /* CARDS */
 .cards{
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  flex-wrap:wrap;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
 }
 
 .card{
-  background:white;
-  padding:40px 25px;
-  width:280px;
-  border-radius:15px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
-  transition:0.3s;
-  border-top:4px solid #d4af37;
+    background:white;
+    padding:40px 25px;
+    width:280px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+    border-top:4px solid #d4af37;
 }
 
 .card:hover{
-  transform:translateY(-8px);
+    transform:translateY(-8px);
 }
 
 .card h3{
-  margin-bottom:15px;
-  color:#1e3a8a;
+    margin-bottom:15px;
+    color:#1e3a8a;
 }
 
 .card p{
-  font-size:14px;
-  color:#555;
+    font-size:14px;
+    color:#555;
 }
 
 /* ABOUT */
 .about{
-  background:#ffffff;
-  padding:70px 15%;
-  text-align:center;
+    background:#ffffff;
+    padding:70px 15%;
+    text-align:center;
 }
 
 .about h2{
-  color:#1e3a8a;
-  margin-bottom:20px;
+    color:#1e3a8a;
+    margin-bottom:20px;
 }
 
 .about p{
-  color:#555;
-  line-height:1.6;
+    color:#555;
+    line-height:1.6;
 }
 
 /* FOOTER */
 footer{
-  background:#0f1e4d;
-  color:white;
-  text-align:center;
-  padding:20px;
-  font-size:14px;
+    background:#0f1e4d;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:14px;
 }
 </style>
 </head>
@@ -173,7 +173,10 @@ footer{
 <section class="hero">
     <h1>Welcome to Aquinas Learning Portal</h1>
     <p>Faith. Excellence. Wisdom.</p>
-    <button onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">Explore Now</button>
+    <!-- Smooth scroll to Quick Access -->
+    <button onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">
+      Explore Now
+    </button>
 </section>
 
 <section class="section">
@@ -211,18 +214,19 @@ footer{
   // Redirect to login if not logged in
   window.onload = function(){
     if(localStorage.getItem("loggedIn") !== "true"){
-      window.location.href = "index.html";
+      window.location.href = "./index.html";
     }
   }
 
   function logout(){
     localStorage.removeItem("loggedIn");
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   }
 </script>
 
 </body>
 </html>
+
 
 
 
