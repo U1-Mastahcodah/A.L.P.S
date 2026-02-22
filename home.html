@@ -67,47 +67,37 @@ nav ul li:hover {
   opacity:0.9;
 }
 
-/* INTERACTIVE BUTTONS */
-.interactive-buttons {
+/* CARDS SECTION */
+.cards-section {
+  padding:80px 10%;
   display:flex;
   justify-content:center;
-  gap:30px;
+  gap:40px;
   flex-wrap:wrap;
 }
 
-.interactive-buttons button {
-  padding:20px 30px;
-  border:none;
-  background: rgba(255,255,255,0.15);
-  color:white;
-  border-radius:12px;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.3s;
-  min-width:160px;
-}
-
-.interactive-buttons button:hover {
-  background: rgba(255,255,255,0.35);
-  transform: translateY(-5px);
-}
-
-/* SECTIONS */
-.section {
-  background:#fdf8ec;
+.card {
+  background:white;
   color:#132340;
-  padding:80px 10%;
-  text-align:center;
-  border-top-left-radius:40px;
-  border-top-right-radius:40px;
+  padding:40px 25px;
+  width:280px;
+  border-radius:15px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  transition:0.3s;
+  border-top:4px solid #d4af37;
+  cursor:pointer;
 }
 
-.section h2 {
-  margin-bottom:30px;
+.card:hover {
+  transform:translateY(-8px);
 }
 
-.section p {
-  font-size:16px;
+.card h3 {
+  margin-bottom:15px;
+}
+
+.card p {
+  font-size:14px;
   line-height:1.5;
 }
 
@@ -125,7 +115,7 @@ footer {
   nav { padding:15px 20px; }
   .hero h1 { font-size:32px; }
   .hero p { font-size:14px; }
-  .interactive-buttons { flex-direction:column; gap:15px; }
+  .cards-section { flex-direction:column; gap:20px; align-items:center; }
 }
 </style>
 </head>
@@ -134,9 +124,9 @@ footer {
 <nav>
   <h2>A.L.P.S</h2>
   <ul>
-    <li onclick="scrollToSection('subjects')">Subjects</li>
-    <li onclick="scrollToSection('facilities')">Facilities</li>
-    <li onclick="scrollToSection('about')">About</li>
+    <li onclick="scrollToCard(0)">Subjects</li>
+    <li onclick="scrollToCard(1)">Facilities</li>
+    <li onclick="scrollToCard(2)">About</li>
     <li><a href="./index.html" style="color:white; text-decoration:none;">Log Out</a></li>
   </ul>
 </nav>
@@ -144,26 +134,22 @@ footer {
 <section class="hero">
   <h1>Welcome to Aquinas Learning Portal</h1>
   <p>Faith. Excellence. Wisdom.</p>
-  <div class="interactive-buttons">
-    <button onclick="scrollToSection('subjects')">Subjects</button>
-    <button onclick="scrollToSection('facilities')">Facilities</button>
-    <button onclick="scrollToSection('about')">About</button>
+</section>
+
+<!-- CARDS -->
+<section class="cards-section">
+  <div class="card" id="subjectsCard">
+    <h3>Subjects</h3>
+    <p>Browse academic programs guided by faith and reason. Track your enrolled subjects and your progress seamlessly.</p>
   </div>
-</section>
-
-<section class="section" id="subjects">
-  <h2>Subjects</h2>
-  <p>Browse academic programs guided by faith and reason. Explore the subjects you’re enrolled in and track your progress easily.</p>
-</section>
-
-<section class="section" id="facilities">
-  <h2>Facilities</h2>
-  <p>Discover learning spaces designed for holistic growth, including labs, library, and interactive classrooms.</p>
-</section>
-
-<section class="section" id="about">
-  <h2>Our Mission</h2>
-  <p>Inspired by St. Thomas Aquinas and rooted in Catholic values, Nuestra Señora de Aranzazu Parochial School is committed to nurturing students through faith, wisdom, and academic excellence.</p>
+  <div class="card" id="facilitiesCard">
+    <h3>Facilities</h3>
+    <p>Explore our learning spaces, laboratories, library, and interactive classrooms designed for holistic development.</p>
+  </div>
+  <div class="card" id="aboutCard">
+    <h3>About</h3>
+    <p>Learn about our Catholic heritage, our mission inspired by St. Thomas Aquinas, and our commitment to student excellence.</p>
+  </div>
 </section>
 
 <footer>
@@ -178,8 +164,12 @@ window.onload = function(){
   }
 }
 
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+// Scroll to cards
+function scrollToCard(index){
+  const cards = document.querySelectorAll('.card');
+  if(cards[index]){
+    cards[index].scrollIntoView({behavior:'smooth', block:'center'});
+  }
 }
 </script>
 
