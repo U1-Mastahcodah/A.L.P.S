@@ -58,47 +58,47 @@ video#bgVideo {
   display: flex;
   height: 100vh;
   width: 100%;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: flex-start; 
-  padding: 0 50px;
+  padding-left: 50px;
   gap: 40px;
 }
 
 
 .sidebar {
   width: 30%; 
-  min-width: 280px; 
+  min-width: 280px;
+  height: 80vh; 
   background: rgba(255,255,255,0.95);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
-  padding: 35px 25px;
+  padding: 30px 20px;
   border-radius: 12px;
-  z-index: 1;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .sidebar h2 {
   color: #1e3a8a;
-  margin-bottom: 20px;
-  font-size: 24px;
+  margin-bottom: 25px;
+  font-size: 26px;
   font-weight: 600;
   text-align: center;
 }
 
 .sidebar input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 15px;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
 .sidebar button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
+  width: 90%;
+  padding: 12px;
+  margin-top: 10px;
   background: #d4af37;
   border: none;
   border-radius: 6px;
@@ -112,7 +112,7 @@ video#bgVideo {
 }
 
 .switch {
-  margin-top: 12px;
+  margin-top: 15px;
   font-size: 13px;
   text-align: center;
 }
@@ -123,9 +123,8 @@ video#bgVideo {
   text-decoration: underline;
 }
 
-
 .welcome-panel {
-  flex: 1; 
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,30 +152,27 @@ video#bgVideo {
   .container {
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 100px;
+    padding-top: 50px;
   }
   .sidebar {
     width: 90%;
-    max-width: none;
-    margin: 0 auto;
+    height: auto;
+    min-width: unset;
   }
   .welcome-panel {
-    flex: none;
     width: 90%;
     margin-top: 20px;
-    padding: 30px;
-  }
-  .welcome-panel h1 {
-    font-size: 28px;
   }
 }
 </style>
 </head>
 <body>
 
+
 <video autoplay loop muted playsinline id="bgVideo">
   <source src="BGvideo.mp4" type="video/mp4">
 </video>
+
 
 <div class="logo">
   <img src="https://nsdaps.lamparasystem.com/logo.png" alt="A.L.P.S Logo">
@@ -184,6 +180,7 @@ video#bgVideo {
 </div>
 
 <div class="container">
+
 
   <div class="sidebar" id="loginBox">
     <h2>Student Login</h2>
@@ -195,7 +192,7 @@ video#bgVideo {
     </div>
   </div>
 
-
+ 
   <div class="sidebar" id="signupBox" style="display:none;">
     <h2>Create Account</h2>
     <input type="text" id="signupUser" placeholder="Username">
@@ -205,6 +202,7 @@ video#bgVideo {
       Already have an account? <a onclick="showLogin()">Login</a>
     </div>
   </div>
+
 
   <div class="welcome-panel">
     <h1>Welcome to Aquinas Learning Portal System</h1>
@@ -260,4 +258,5 @@ video#bgVideo {
 
 </body>
 </html>
+
 
