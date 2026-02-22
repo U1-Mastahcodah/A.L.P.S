@@ -19,7 +19,7 @@ body, html {
   overflow: hidden;
 }
 
-
+/* Background video */
 video#bgVideo {
   position: fixed;
   top: 0;
@@ -30,41 +30,66 @@ video#bgVideo {
   z-index: -1;
 }
 
+/* Logo top-left */
+.logo {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
 
+.logo img {
+  height: 40px;
+}
+
+.logo span {
+  font-weight: bold;
+  color: white;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+/* Container for login + welcome panel */
 .container {
   display: flex;
   height: 100vh;
   width: 100%;
 }
 
-
+/* Sidebar: login/sign-up */
 .sidebar {
-  width: 35%;
+  width: 30%;
+  max-width: 350px;
   background: rgba(255,255,255,0.95);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 30px;
+  padding: 30px 25px;
+  z-index: 1;
 }
 
 .sidebar h2 {
   color: #1e3a8a;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
 .sidebar input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
+  padding: 10px;
+  margin-bottom: 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
 .sidebar button {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
+  padding: 10px;
+  margin-top: 8px;
   background: #d4af37;
   border: none;
   border-radius: 6px;
@@ -77,7 +102,7 @@ video#bgVideo {
 }
 
 .switch {
-  margin-top: 15px;
+  margin-top: 12px;
   font-size: 13px;
 }
 
@@ -87,7 +112,7 @@ video#bgVideo {
   text-decoration: underline;
 }
 
-
+/* Welcome panel on right side */
 .welcome-panel {
   flex: 1;
   display: flex;
@@ -95,19 +120,19 @@ video#bgVideo {
   align-items: center;
   color: white;
   padding: 40px;
-  background: rgba(0,0,0,0.2); 
+  background: rgba(0,0,0,0.2); /* semi overlay */
   text-align: center;
   flex-direction: column;
 }
 
 .welcome-panel h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 32px;
+  margin-bottom: 15px;
 }
 
 .welcome-panel p {
-  font-size: 18px;
-  max-width: 500px;
+  font-size: 16px;
+  max-width: 450px;
 }
 
 /* Responsive */
@@ -116,26 +141,37 @@ video#bgVideo {
     flex-direction: column;
   }
   .sidebar {
-    width: 100%;
+    width: 90%;
+    max-width: none;
     border-bottom: 1px solid #ccc;
+    margin: 0 auto;
   }
   .welcome-panel {
     flex: none;
     padding: 30px;
+  }
+  .welcome-panel h1 {
+    font-size: 28px;
   }
 }
 </style>
 </head>
 <body>
 
-
+<!-- Background Video -->
 <video autoplay loop muted playsinline id="bgVideo">
   <source src="BGvideo.mp4" type="video/mp4">
 </video>
 
+<!-- Logo -->
+<div class="logo">
+  <img src="logo.png" alt="A.L.P.S Logo">
+  <span>A.L.P.S</span>
+</div>
+
 <div class="container">
 
-
+  <!-- Login box -->
   <div class="sidebar" id="loginBox">
     <h2>Student Login</h2>
     <input type="text" id="loginUser" placeholder="Username">
@@ -146,7 +182,7 @@ video#bgVideo {
     </div>
   </div>
 
-
+  <!-- Sign-up box -->
   <div class="sidebar" id="signupBox" style="display:none;">
     <h2>Create Account</h2>
     <input type="text" id="signupUser" placeholder="Username">
@@ -157,7 +193,7 @@ video#bgVideo {
     </div>
   </div>
 
-  
+  <!-- Welcome Panel -->
   <div class="welcome-panel">
     <h1>Welcome to Aquinas Learning Portal System</h1>
     <p>Access your subjects, facilities, announcements, and school information. Please log in or create an account to continue.</p>
@@ -166,7 +202,7 @@ video#bgVideo {
 </div>
 
 <script>
-
+  // If already logged in, redirect to home
   if(localStorage.getItem("loggedIn") === "true"){
     window.location.href = "./home.html";
   }
