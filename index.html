@@ -17,87 +17,38 @@ html,body{
   height:100%;
 }
 
-/* BACKGROUND VIDEO */
-video{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-1;
-}
-
-/* NAVBAR */
-.navbar{
+/* BACKGROUND */
+body{
+  background:linear-gradient(135deg,#0f1e4d,#1e3a8a);
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
-  padding:16px 24px;
-  background:#fff;
-  border-bottom:1px solid #d1d9e6;
 }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.logo img{
-  height:36px;
-}
-
-.logo span{
-  font-family:Georgia,serif;
-  font-weight:bold;
-  font-size:22px;
-}
-
-.signup-btn{
-  padding:8px 14px;
-  border-radius:6px;
-  background:#ced6e0;
-  border:1px solid #a0adc3;
-  cursor:pointer;
-  text-decoration:underline;
-}
-
-/* CONTAINER */
-.container{
-  display:flex;
-  min-height:calc(100vh - 62px);
-}
-
-/* SIDEBAR LOGIN */
-.sidebar{
+.login-box{
+  background:white;
+  padding:40px;
   width:100%;
-  max-width:340px;
-  background:#f7f9fc;
-  padding:30px 25px;
-  border-right:1px solid #d1d9e6;
+  max-width:350px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
-.hidden{
-  display:none !important;
-}
-
-label{
-  margin-top:14px;
-  display:block;
+.login-box h2{
+  text-align:center;
+  margin-bottom:20px;
 }
 
 input{
   width:100%;
   padding:10px;
-  margin-top:6px;
+  margin:10px 0;
   border-radius:6px;
-  border:1px solid #a0adc3;
+  border:1px solid #ccc;
 }
 
-.sidebar button{
+button{
   width:100%;
-  margin-top:22px;
   padding:12px;
   background:#1e2a44;
   color:white;
@@ -107,7 +58,7 @@ input{
 }
 
 .switch{
-  margin-top:16px;
+  margin-top:15px;
   text-align:center;
 }
 
@@ -115,154 +66,81 @@ input{
   cursor:pointer;
   text-decoration:underline;
 }
-
-/* RIGHT SIDE TEXT */
-.welcome-panel{
-  flex:1;
-  padding:40px 50px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  color:white;
-}
-
-.welcome-panel h1{
-  font-size:36px;
-  margin-bottom:10px;
-}
-
-.welcome-panel p{
-  font-size:18px;
-  max-width:600px;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .container{
-    flex-direction:column;
-  }
-  .sidebar{
-    max-width:none;
-    border-right:none;
-    border-bottom:1px solid #d1d9e6;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<!-- Background Video -->
-<video autoplay loop muted playsinline>
-  <source src="./BGvideo.mp4" type="video/mp4">
-</video>
+<div class="login-box" id="loginBox">
+  <h2>Student Login</h2>
+  <input type="text" id="loginUser" placeholder="Username">
+  <input type="password" id="loginPass" placeholder="Password">
+  <button onclick="login()">Log In</button>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="logo">
-    <img src="https://files.lamparaschool.ph/lampara/sms/school_site/logo/05fdf8-nsdaps.png">
-    <span>A.L.P.S</span>
+  <div class="switch">
+    No account? <a onclick="showSignup()">Sign Up</a>
   </div>
-
-  <button class="signup-btn" onclick="showSignup()">Sign Up</button>
 </div>
 
-<div class="container">
+<div class="login-box" id="signupBox" style="display:none;">
+  <h2>Create Account</h2>
+  <input type="text" id="signupUser" placeholder="Username">
+  <input type="password" id="signupPass" placeholder="Password">
+  <button onclick="signUp()">Create Account</button>
 
-  <!-- LOGIN -->
-  <div class="sidebar" id="loginBox">
-    <h2>Student Login</h2>
-
-    <label>Username</label>
-    <input type="text" id="loginUser">
-
-    <label>Password</label>
-    <input type="password" id="loginPass">
-
-    <button onclick="login()">Log in</button>
-
-    <div class="switch">
-      Don’t have an account?
-      <a onclick="showSignup()">Sign up</a>
-    </div>
+  <div class="switch">
+    Already have an account? <a onclick="showLogin()">Log In</a>
   </div>
-
-  <!-- SIGNUP -->
-  <div class="sidebar hidden" id="signupBox">
-    <h2>Create Account</h2>
-
-    <label>Username</label>
-    <input type="text" id="signupUser">
-
-    <label>Password</label>
-    <input type="password" id="signupPass">
-
-    <button onclick="signUp()">Create Account</button>
-
-    <div class="switch">
-      Already have an account?
-      <a onclick="showLogin()">Log in</a>
-    </div>
-  </div>
-
-  <!-- RIGHT SIDE -->
-  <div class="welcome-panel">
-    <h1>Welcome to Aquinas Learning Portal System</h1>
-    <p>
-      Access your subjects, facilities, announcements, and school information.
-      Please log in or create an account to continue.
-    </p>
-  </div>
-
 </div>
 
 <script>
-const loginBox  = document.getElementById('loginBox');
-const signupBox = document.getElementById('signupBox');
+// If already logged in, go home
+if(localStorage.getItem("loggedIn") === "true"){
+    window.location.href = "index.html";
+}
 
 function showSignup(){
-  loginBox.classList.add("hidden");
-  signupBox.classList.remove("hidden");
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("signupBox").style.display="block";
 }
 
 function showLogin(){
-  signupBox.classList.add("hidden");
-  loginBox.classList.remove("hidden");
+    document.getElementById("signupBox").style.display="none";
+    document.getElementById("loginBox").style.display="block";
 }
 
 function signUp(){
-  const user = document.getElementById("signupUser").value;
-  const pass = document.getElementById("signupPass").value;
+    const user = document.getElementById("signupUser").value;
+    const pass = document.getElementById("signupPass").value;
 
-  if(user !== "" && pass !== ""){
-    localStorage.setItem("username", user);
-    localStorage.setItem("password", pass);
-    alert("Account created successfully!");
-    showLogin();
-  } else {
-    alert("Please fill in all fields.");
-  }
+    if(user && pass){
+        localStorage.setItem("username", user);
+        localStorage.setItem("password", pass);
+        alert("Account created successfully!");
+        showLogin();
+    } else {
+        alert("Please fill in all fields.");
+    }
 }
 
 function login(){
-  const user = document.getElementById("loginUser").value;
-  const pass = document.getElementById("loginPass").value;
+    const user = document.getElementById("loginUser").value;
+    const pass = document.getElementById("loginPass").value;
 
-  const savedUser = localStorage.getItem("username");
-  const savedPass = localStorage.getItem("password");
+    const savedUser = localStorage.getItem("username");
+    const savedPass = localStorage.getItem("password");
 
-  if(user === savedUser && pass === savedPass){
-    localStorage.setItem("loggedIn", "true");
-    window.location.href = "index.html";   // CONNECTED TO HOME
-  } else {
-    alert("Incorrect username or password");
-  }
+    if(user === savedUser && pass === savedPass){
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "index.html";
+    } else {
+        alert("Incorrect username or password.");
+    }
 }
 </script>
 
 </body>
 </html>
-
 
 
 
