@@ -20,6 +20,7 @@ body, html {
   overflow: hidden;
 }
 
+
 video#bgVideo {
   position: fixed;
   top: 0;
@@ -29,6 +30,7 @@ video#bgVideo {
   object-fit: cover;
   z-index: -1;
 }
+
 
 .logo {
   position: absolute;
@@ -45,7 +47,7 @@ video#bgVideo {
 }
 
 .logo span {
-  font-weight: bold; 
+  font-weight: bold;
   color: white;
   font-size: 24px;
   letter-spacing: 1px;
@@ -57,15 +59,15 @@ video#bgVideo {
   height: 100vh;
   width: 100%;
   align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  gap: 30px;
+  justify-content: flex-start; 
+  padding: 0 50px;
+  gap: 40px;
 }
 
 
 .sidebar {
-  width: 100%;
-  max-width: 350px;
+  width: 30%; 
+  min-width: 280px; 
   background: rgba(255,255,255,0.95);
   display: flex;
   flex-direction: column;
@@ -123,16 +125,17 @@ video#bgVideo {
 
 
 .welcome-panel {
-  flex: 1;
+  flex: 1; 
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   padding: 40px;
-  background: rgba(0,0,0,0.25); 
+  background: rgba(0,0,0,0.25);
   text-align: center;
   flex-direction: column;
   border-radius: 12px;
+  min-width: 300px;
 }
 
 .welcome-panel h1 {
@@ -171,11 +174,9 @@ video#bgVideo {
 </head>
 <body>
 
-
 <video autoplay loop muted playsinline id="bgVideo">
   <source src="BGvideo.mp4" type="video/mp4">
 </video>
-
 
 <div class="logo">
   <img src="https://nsdaps.lamparasystem.com/logo.png" alt="A.L.P.S Logo">
@@ -183,7 +184,6 @@ video#bgVideo {
 </div>
 
 <div class="container">
-
 
   <div class="sidebar" id="loginBox">
     <h2>Student Login</h2>
@@ -195,6 +195,7 @@ video#bgVideo {
     </div>
   </div>
 
+
   <div class="sidebar" id="signupBox" style="display:none;">
     <h2>Create Account</h2>
     <input type="text" id="signupUser" placeholder="Username">
@@ -205,7 +206,6 @@ video#bgVideo {
     </div>
   </div>
 
-
   <div class="welcome-panel">
     <h1>Welcome to Aquinas Learning Portal System</h1>
     <p>Access your subjects, facilities, announcements, and school information. Please log in or create an account to continue.</p>
@@ -214,7 +214,7 @@ video#bgVideo {
 </div>
 
 <script>
- 
+
   if(localStorage.getItem("loggedIn") === "true"){
     window.location.href = "./home.html";
   }
