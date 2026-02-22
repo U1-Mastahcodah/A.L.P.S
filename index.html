@@ -1,124 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - Aquinas Portal</title>
+<title>Aquinas Learning Portal Login</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    height:100vh;
-    background: url('school.jpg') no-repeat center center/cover;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
-/* Dark Overlay */
-body::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(10,20,60,0.65);
-    top:0;
-    left:0;
+
+video#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
-/* Login Box */
-.login-container{
-    position:relative;
-    background:white;
-    padding:50px 40px;
-    width:350px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-    text-align:center;
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
 }
 
-.login-container h2{
-    margin-bottom:25px;
-    color:#1e3a8a;
+
+.sidebar {
+  width: 35%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 30px;
 }
 
-input{
-    width:100%;
-    padding:12px;
-    margin-bottom:15px;
-    border-radius:6px;
-    border:1px solid #ccc;
+.sidebar h2 {
+  color: #1e3a8a;
+  margin-bottom: 25px;
 }
 
-button{
-    width:100%;
-    padding:12px;
-    background:#d4af37;
-    border:none;
-    border-radius:6px;
-    font-weight:600;
-    cursor:pointer;
+.sidebar input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-button:hover{
-    background:#f0c95e;
+.sidebar button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #d4af37;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.small-text{
-    margin-top:15px;
-    font-size:13px;
+.sidebar button:hover {
+  background: #f0c95e;
 }
 
-.small-text a{
-    color:#1e3a8a;
-    text-decoration:none;
+.switch {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.switch a {
+  color: #1e3a8a;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+.welcome-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 40px;
+  background: rgba(0,0,0,0.2); 
+  text-align: center;
+  flex-direction: column;
+}
+
+.welcome-panel h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.welcome-panel p {
+  font-size: 18px;
+  max-width: 500px;
+}
+
+/* Responsive */
+@media(max-width: 900px){
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+  }
+  .welcome-panel {
+    flex: none;
+    padding: 30px;
+  }
 }
 </style>
 </head>
-
 <body>
 
-<div class="login-container" id="loginBox">
-    <h2>Aquinas Portal Login</h2>
+
+<video autoplay loop muted playsinline id="bgVideo">
+  <source src="BGvideo.mp4" type="video/mp4">
+</video>
+
+<div class="container">
+
+
+  <div class="sidebar" id="loginBox">
+    <h2>Student Login</h2>
     <input type="text" id="loginUser" placeholder="Username">
     <input type="password" id="loginPass" placeholder="Password">
     <button onclick="login()">Login</button>
-    <div class="small-text">
-        Don't have an account? <a href="#" onclick="showSignup()">Sign up</a>
+    <div class="switch">
+      Don’t have an account? <a onclick="showSignup()">Sign up</a>
     </div>
-</div>
+  </div>
 
-<div class="login-container" id="signupBox" style="display:none;">
+
+  <div class="sidebar" id="signupBox" style="display:none;">
     <h2>Create Account</h2>
     <input type="text" id="signupUser" placeholder="Username">
     <input type="password" id="signupPass" placeholder="Password">
     <button onclick="signUp()">Sign Up</button>
-    <div class="small-text">
-        Already have an account? <a href="#" onclick="showLogin()">Login</a>
+    <div class="switch">
+      Already have an account? <a onclick="showLogin()">Login</a>
     </div>
+  </div>
+
+  
+  <div class="welcome-panel">
+    <h1>Welcome to Aquinas Learning Portal System</h1>
+    <p>Access your subjects, facilities, announcements, and school information. Please log in or create an account to continue.</p>
+  </div>
+
 </div>
 
 <script>
-  // If already logged in, go to home
+
   if(localStorage.getItem("loggedIn") === "true"){
     window.location.href = "./home.html";
   }
 
   function showSignup(){
     document.getElementById("loginBox").style.display = "none";
-    document.getElementById("signupBox").style.display = "block";
+    document.getElementById("signupBox").style.display = "flex";
   }
 
   function showLogin(){
     document.getElementById("signupBox").style.display = "none";
-    document.getElementById("loginBox").style.display = "block";
+    document.getElementById("loginBox").style.display = "flex";
   }
 
   function signUp(){
