@@ -6,119 +6,147 @@
 <title>A.L.P.S Login</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-  margin:0;
-  padding:0;
+/* Reset */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-html, body{
-  height:100%;
-  width:100%;
-  overflow:hidden;
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
-/* Background Video */
+/* Background video */
 #bgVideo {
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  z-index:-1;
-  opacity:0.5; /* slightly dimmed so login is readable */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
-/* Logo on top */
+/* Logo */
 .logo {
-  position:absolute;
-  top:20px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  align-items:center;
-  gap:10px;
-  z-index:2;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
 }
 
-.logo img{
-  height:50px;
-  width:auto;
+.logo img {
+  height: 50px;
 }
 
-.logo span{
-  font-weight:bold;
-  font-size:28px;
-  color:white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+.logo span {
+  font-weight: bold;
+  color: white;
+  font-size: 26px;
+  letter-spacing: 1px;
 }
 
-/* Centered login box */
-.login-box{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  width:350px;
-  background: rgba(255,255,255,0.95);
-  padding:40px 30px;
-  border-radius:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.2);
-  z-index:2;
-  display:flex;
-  flex-direction:column;
+/* Container */
+.container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-box h2{
-  color:#1e3a8a;
-  margin-bottom:20px;
-  text-align:center;
+/* Login / Sign-up box */
+.sidebar {
+  width: 350px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  padding: 35px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
 }
 
-.login-box input{
-  width:100%;
-  padding:12px;
-  margin-bottom:15px;
-  border-radius:6px;
-  border:1px solid #ccc;
+.sidebar h2 {
+  margin-bottom: 20px;
+  color: #1e3a8a;
+  font-size: 24px;
 }
 
-.login-box button{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:6px;
-  background:#d4af37;
-  color:#0f1e4d;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.3s;
+.sidebar label {
+  width: 100%;
+  margin-top: 12px;
+  display: block;
+  color: #132340;
 }
 
-.login-box button:hover{
-  background:#f0c95e;
+.sidebar input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #a0adc3;
 }
 
-.login-box .switch{
-  margin-top:15px;
-  font-size:14px;
-  text-align:center;
+.sidebar button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: #d4af37;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.login-box .switch a{
-  color:#1e3a8a;
-  text-decoration:underline;
-  cursor:pointer;
+.sidebar button:hover {
+  background: #f0c95e;
 }
 
-/* Responsive */
-@media(max-width:500px){
-  .login-box{
-    width:90%;
-    padding:30px 20px;
+.switch {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #1e3a8a;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(15,30,77,0.85);
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+}
+
+/* Mobile responsiveness */
+@media(max-width: 600px){
+  .sidebar {
+    width: 90%;
+    padding: 25px 15px;
   }
-  .logo span{
-    font-size:24px;
+
+  .logo img {
+    height: 40px;
+  }
+
+  .logo span {
+    font-size: 22px;
   }
 }
 </style>
@@ -126,39 +154,58 @@ html, body{
 
 <body>
 
-<!-- Background video -->
-<video autoplay loop muted playsinline id="bgVideo">
-  <source src="https://nsdaps.lamparasystem.com/BGvideo.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
+<!-- Background Video -->
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="BGvideo.mp4" type="video/mp4">
 </video>
 
-<!-- Logo -->
+<!-- Logo at top -->
 <div class="logo">
-  <img src="https://nsdaps.lamparasystem.com/logo.png" alt="A.L.P.S Logo">
+  <img src="https://nsdaps.lamparasystem.com/logo.png" alt="Nuestra Logo">
   <span>A.L.P.S</span>
 </div>
 
-<!-- Login box -->
-<div class="login-box" id="loginBox">
-  <h2>Student Login</h2>
-  <input type="text" id="loginUser" placeholder="Username">
-  <input type="password" id="loginPass" placeholder="Password">
-  <button onclick="login()">Log in</button>
-  <div class="switch">
-    Don’t have an account? <a onclick="showSignup()">Sign up</a>
+<!-- Login Container -->
+<div class="container">
+
+  <div class="sidebar" id="loginBox">
+    <h2>Student Login</h2>
+
+    <label>Username</label>
+    <input type="text" id="loginUser">
+
+    <label>Password</label>
+    <input type="password" id="loginPass">
+
+    <button onclick="login()">Login</button>
+
+    <div class="switch">
+      Don’t have an account? <a onclick="showSignup()">Sign up</a>
+    </div>
   </div>
+
+  <div class="sidebar" id="signupBox" style="display:none;">
+    <h2>Create Account</h2>
+
+    <label>Username</label>
+    <input type="text" id="signupUser">
+
+    <label>Password</label>
+    <input type="password" id="signupPass">
+
+    <button onclick="signUp()">Sign Up</button>
+
+    <div class="switch">
+      Already have an account? <a onclick="showLogin()">Login</a>
+    </div>
+  </div>
+
 </div>
 
-<!-- Sign-up box hidden initially -->
-<div class="login-box hidden" id="signupBox">
-  <h2>Create Account</h2>
-  <input type="text" id="signupUser" placeholder="Username">
-  <input type="password" id="signupPass" placeholder="Password">
-  <button onclick="signUp()">Sign Up</button>
-  <div class="switch">
-    Already have an account? <a onclick="showLogin()">Log in</a>
-  </div>
-</div>
+<!-- Footer -->
+<footer>
+  © 2026 Aquinas Learning Portal System | Faith & Knowledge
+</footer>
 
 <script>
 const loginBox = document.getElementById('loginBox');
@@ -168,45 +215,43 @@ const loginPass = document.getElementById('loginPass');
 const signupUser = document.getElementById('signupUser');
 const signupPass = document.getElementById('signupPass');
 
-function showSignup(){
-  loginBox.classList.add('hidden');
-  signupBox.classList.remove('hidden');
+function showSignup() {
+  loginBox.style.display = 'none';
+  signupBox.style.display = 'flex';
 }
 
-function showLogin(){
-  signupBox.classList.add('hidden');
-  loginBox.classList.remove('hidden');
+function showLogin() {
+  signupBox.style.display = 'none';
+  loginBox.style.display = 'flex';
 }
 
-function signUp(){
+function signUp() {
   const user = signupUser.value.trim();
   const pass = signupPass.value.trim();
   if(user && pass){
     localStorage.setItem('username', user);
     localStorage.setItem('password', pass);
-    alert("Account created!");
+    alert('Account created successfully!');
     showLogin();
   } else {
-    alert("Please fill in all fields.");
+    alert('Please fill in all fields.');
   }
 }
 
-function login(){
+function login() {
   const user = loginUser.value.trim();
   const pass = loginPass.value.trim();
   const savedUser = localStorage.getItem('username');
   const savedPass = localStorage.getItem('password');
 
-  if(user===savedUser && pass===savedPass){
-    alert("Login successful!");
-    // redirect or show main content
+  if(user === savedUser && pass === savedPass){
+    alert('Login successful!');
+    // Redirect or show main content
   } else {
-    alert("Incorrect username or password");
+    alert('Incorrect username or password');
   }
 }
 </script>
 
 </body>
 </html>
-
-
