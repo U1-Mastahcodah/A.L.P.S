@@ -6,6 +6,7 @@
 <title>Aquinas Learning Portal Login</title>
 
 <style>
+
 * {
   box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
@@ -29,10 +30,9 @@ video#bgVideo {
   z-index: -1;
 }
 
-
 .logo {
-  position: fixed;
-  top: 15px;
+  position: absolute;
+  top: 20px;
   left: 20px;
   display: flex;
   align-items: center;
@@ -41,13 +41,13 @@ video#bgVideo {
 }
 
 .logo img {
-  height: 40px;
+  height: 45px;
 }
 
 .logo span {
-  font-weight: bold;
+  font-weight: bold; 
   color: white;
-  font-size: 22px;
+  font-size: 24px;
   letter-spacing: 1px;
 }
 
@@ -56,25 +56,33 @@ video#bgVideo {
   display: flex;
   height: 100vh;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  gap: 30px;
 }
 
 
 .sidebar {
-  width: 30%;
+  width: 100%;
   max-width: 350px;
   background: rgba(255,255,255,0.95);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px 25px;
+  padding: 35px 25px;
+  border-radius: 12px;
   z-index: 1;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .sidebar h2 {
   color: #1e3a8a;
   margin-bottom: 20px;
   font-size: 24px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .sidebar input {
@@ -94,6 +102,7 @@ video#bgVideo {
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .sidebar button:hover {
@@ -103,6 +112,7 @@ video#bgVideo {
 .switch {
   margin-top: 12px;
   font-size: 13px;
+  text-align: center;
 }
 
 .switch a {
@@ -119,9 +129,10 @@ video#bgVideo {
   align-items: center;
   color: white;
   padding: 40px;
-  background: rgba(0,0,0,0.2); 
+  background: rgba(0,0,0,0.25); 
   text-align: center;
   flex-direction: column;
+  border-radius: 12px;
 }
 
 .welcome-panel h1 {
@@ -138,15 +149,18 @@ video#bgVideo {
 @media(max-width: 900px){
   .container {
     flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 100px;
   }
   .sidebar {
     width: 90%;
     max-width: none;
-    border-bottom: 1px solid #ccc;
     margin: 0 auto;
   }
   .welcome-panel {
     flex: none;
+    width: 90%;
+    margin-top: 20px;
     padding: 30px;
   }
   .welcome-panel h1 {
@@ -157,17 +171,19 @@ video#bgVideo {
 </head>
 <body>
 
+
 <video autoplay loop muted playsinline id="bgVideo">
   <source src="BGvideo.mp4" type="video/mp4">
 </video>
 
 
 <div class="logo">
-  <img src="logo.png" alt="A.L.P.S Logo">
+  <img src="https://nsdaps.lamparasystem.com/logo.png" alt="A.L.P.S Logo">
   <span>A.L.P.S</span>
 </div>
 
 <div class="container">
+
 
   <div class="sidebar" id="loginBox">
     <h2>Student Login</h2>
@@ -179,7 +195,6 @@ video#bgVideo {
     </div>
   </div>
 
- 
   <div class="sidebar" id="signupBox" style="display:none;">
     <h2>Create Account</h2>
     <input type="text" id="signupUser" placeholder="Username">
@@ -199,7 +214,7 @@ video#bgVideo {
 </div>
 
 <script>
-
+ 
   if(localStorage.getItem("loggedIn") === "true"){
     window.location.href = "./home.html";
   }
