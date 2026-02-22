@@ -18,7 +18,7 @@ body{
     color:#333;
 }
 
-
+/* NAVIGATION */
 nav{
     background: rgba(10,20,60,0.95);
     padding:15px 60px;
@@ -27,9 +27,9 @@ nav{
     align-items:center;
 }
 
-nav h2{
+nav h2 a{
     color:white;
-    letter-spacing:1px;
+    text-decoration:none;
 }
 
 nav ul{
@@ -48,6 +48,13 @@ nav ul li a{
 nav ul li a:hover{
     color:#d4af37;
 }
+
+nav ul li a.active{
+    font-weight:bold;
+    border-bottom:2px solid #d4af37;
+    padding-bottom:4px;
+}
+
 
 .hero{
     text-align:center;
@@ -162,14 +169,14 @@ footer{
 <body>
 
 <nav>
-    <h2><a href="index.html" style="color:white;text-decoration:none;">A.L.P.S</a></h2>
+    <h2><a href="index.html">A.L.P.S</a></h2>
     <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="subjects.html">Subjects</a></li>
         <li><a href="facilities.html">Facilities</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="login.html">Log Out</a></li>
+        <li><a href="#" onclick="logout()">Log Out</a></li>
     </ul>
 </nav>
 
@@ -200,7 +207,7 @@ footer{
         <div class="card">
             <a href="history.html">
                 <h3>School History</h3>
-                <p>Learn about NSDPAS history.</p>
+                <p>Learn about NSDAPS history.</p>
             </a>
         </div>
 
@@ -220,5 +227,21 @@ footer{
     @ 2026 Aquinas Learning Portal System | Faith & Knowledge
 </footer>
 
+<script>
+
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+
+function logout(){
+    if(confirm("Are you sure you want to log out?")){
+        localStorage.removeItem("loggedIn");
+        window.location.href = "login.html";
+    }
+}
+</script>
+
 </body>
 </html>
+
