@@ -154,7 +154,7 @@ function login(){
 
   if(user === savedUser && pass === savedPass){
     localStorage.setItem("loggedIn","true");
-    window.location.href="login.html"; // redirect to home page
+    window.location.href="index.html"; // redirect to home page
   } else {
     alert("Incorrect username or password");
   }
@@ -163,11 +163,12 @@ function login(){
 // redirect if already logged in
 window.onload = function(){
   if(localStorage.getItem("loggedIn")==="true"){
-    window.location.href="login.html";
+    window.location.href="index.html";
   }
 }
 </script>
 
 </body>
 </html>
+
 
