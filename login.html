@@ -3,231 +3,171 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>A.L.P.S Home</title>
+<title>A.L.P.S Login</title>
 
 <style>
 *{
-  margin:0;
-  padding:0;
   box-sizing:border-box;
   font-family:'Segoe UI',sans-serif;
+  margin:0;
+  padding:0;
 }
 
-body{
-  background: linear-gradient(135deg, #0f1e4d, #1e3a8a, #d4af37);
-  color:#333;
+body, html{
+  height:100%;
+  width:100%;
+  overflow:hidden;
 }
 
-/* NAVBAR */
-nav{
-  background: rgba(10,20,60,0.95);
-  padding:15px 60px;
+/* Background Video */
+video#bgVideo{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-1;
+}
+
+/* Login Box */
+.container{
+  height:100%;
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
-  color:white;
 }
 
-nav h2{
-  font-weight:600;
-  letter-spacing:1px;
-}
-
-nav ul{
-  list-style:none;
+.sidebar{
+  width:350px;
+  background: rgba(255,255,255,0.95);
+  padding:40px 30px;
+  border-radius:12px;
   display:flex;
-  gap:25px;
+  flex-direction:column;
+  justify-content:center;
 }
 
-nav ul li{
-  cursor:pointer;
-  font-size:14px;
-  transition:0.3s;
-}
-
-nav ul li:hover{
-  color:#d4af37;
-}
-
-/* HERO */
-.hero{
+.sidebar h2{
   text-align:center;
-  padding:120px 20px;
-  color:white;
+  color:#1e3a8a;
+  margin-bottom:25px;
 }
 
-.hero h1{
-  font-size:40px;
+input{
+  width:100%;
+  padding:12px;
   margin-bottom:15px;
-  font-weight:600;
+  border-radius:6px;
+  border:1px solid #ccc;
 }
 
-.hero p{
-  font-size:16px;
-  margin-bottom:30px;
-  opacity:0.9;
-}
-
-.hero button{
-  padding:12px 30px;
-  border:none;
+button{
+  width:100%;
+  padding:12px;
   background:#d4af37;
-  color:#0f1e4d;
+  border:none;
   border-radius:6px;
   font-weight:600;
   cursor:pointer;
-  transition:0.3s;
+  margin-bottom:10px;
 }
 
-.hero button:hover{
+button:hover{
   background:#f0c95e;
 }
 
-/* CONTENT SECTION */
-.section{
-  background:#fdf8ec;
-  padding:80px 10%;
+.switch{
   text-align:center;
-  border-top-left-radius:40px;
-  border-top-right-radius:40px;
-}
-
-.section h2{
-  margin-bottom:40px;
-  color:#1e3a8a;
-}
-
-/* CARDS */
-.cards{
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  flex-wrap:wrap;
-}
-
-.card{
-  background:white;
-  padding:40px 25px;
-  width:280px;
-  border-radius:15px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
-  transition:0.3s;
-  border-top:4px solid #d4af37;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-}
-
-.card h3{
-  margin-bottom:15px;
-  color:#1e3a8a;
-}
-
-.card p{
-  font-size:14px;
-  color:#555;
-}
-
-/* ABOUT */
-.about{
-  background:#ffffff;
-  padding:70px 15%;
-  text-align:center;
-}
-
-.about h2{
-  color:#1e3a8a;
-  margin-bottom:20px;
-}
-
-.about p{
-  color:#555;
-  line-height:1.6;
-}
-
-/* FOOTER */
-footer{
-  background:#0f1e4d;
-  color:white;
-  text-align:center;
-  padding:20px;
   font-size:14px;
 }
+
+.switch a{
+  color:#1e3a8a;
+  cursor:pointer;
+  text-decoration:underline;
+}
+
 </style>
 </head>
 
 <body>
 
-<nav>
-    <h2>A.L.P.S</h2>
-    <ul>
-        <li>Home</li>
-        <li>Subjects</li>
-        <li>Facilities</li>
-        <li>About</li>
-        <li><a href="#" style="color:white; text-decoration:none;" onclick="logout()">Log Out</a></li>
-    </ul>
-</nav>
+<!-- Background Video -->
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="BGvideo.mp4" type="video/mp4">
+</video>
 
-<section class="hero">
-    <h1>Welcome to Aquinas Learning Portal</h1>
-    <p>Faith. Excellence. Wisdom.</p>
-    <button onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">Explore Now</button>
-</section>
-
-<section class="section">
-    <h2>Quick Access</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Subjects</h3>
-            <p>Browse academic programs guided by faith and reason.</p>
-        </div>
-        <div class="card">
-            <h3>Facilities</h3>
-            <p>Discover learning spaces designed for holistic growth.</p>
-        </div>
-        <div class="card">
-            <h3>School History</h3>
-            <p>Learn about our Catholic heritage and tradition.</p>
-        </div>
+<div class="container">
+  <!-- Login Box -->
+  <div class="sidebar" id="loginBox">
+    <h2>Student Login</h2>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div class="switch">
+      Don’t have an account? <a onclick="showSignup()">Sign up</a>
     </div>
-</section>
+  </div>
 
-<section class="about">
-    <h2>Our Mission</h2>
-    <p>
-        Inspired by St. Thomas Aquinas and rooted in Catholic values,
-        Nuestra Señora de Aranzazu Parochial School is committed to
-        nurturing students through faith, wisdom, and academic excellence.
-    </p>
-</section>
-
-<footer>
-    © 2026 Aquinas Learning Portal System | Faith & Knowledge
-</footer>
+  <!-- Signup Box -->
+  <div class="sidebar" id="signupBox" style="display:none;">
+    <h2>Create Account</h2>
+    <input type="text" id="signupUser" placeholder="Username">
+    <input type="password" id="signupPass" placeholder="Password">
+    <button onclick="signUp()">Sign Up</button>
+    <div class="switch">
+      Already have an account? <a onclick="showLogin()">Login</a>
+    </div>
+  </div>
+</div>
 
 <script>
-  // Redirect to login if not logged in
-  window.onload = function(){
-    if(localStorage.getItem("loggedIn") !== "true"){
-      window.location.href = "index.html";
-    }
-  }
+function showSignup(){
+  document.getElementById("loginBox").style.display="none";
+  document.getElementById("signupBox").style.display="flex";
+}
 
-  function logout(){
-    localStorage.removeItem("loggedIn");
-    window.location.href = "index.html";
+function showLogin(){
+  document.getElementById("signupBox").style.display="none";
+  document.getElementById("loginBox").style.display="flex";
+}
+
+function signUp(){
+  const user = document.getElementById("signupUser").value.trim();
+  const pass = document.getElementById("signupPass").value.trim();
+  if(user && pass){
+    localStorage.setItem("username", user);
+    localStorage.setItem("password", pass);
+    alert("Account created successfully!");
+    showLogin();
+  } else {
+    alert("Please fill in all fields.");
   }
+}
+
+function login(){
+  const user = document.getElementById("loginUser").value.trim();
+  const pass = document.getElementById("loginPass").value.trim();
+  const savedUser = localStorage.getItem("username");
+  const savedPass = localStorage.getItem("password");
+
+  if(user === savedUser && pass === savedPass){
+    localStorage.setItem("loggedIn","true");
+    window.location.href="login.html"; // redirect to home page
+  } else {
+    alert("Incorrect username or password");
+  }
+}
+
+// redirect if already logged in
+window.onload = function(){
+  if(localStorage.getItem("loggedIn")==="true"){
+    window.location.href="login.html";
+  }
+}
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
 
