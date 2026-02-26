@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School History - ALPS</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:#f4f6fb;
+}
+
+/* NAVBAR */
+nav{
+  background:#0f1e4d;
+  padding:15px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:25px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  font-size:14px;
+}
+
+nav ul li a:hover{
+  color:#d4af37;
+}
+
+/* HISTORY SECTION */
+.history{
+  padding:80px 15%;
+  text-align:center;
+}
+
+.history h1{
+  color:#1e3a8a;
+  margin-bottom:30px;
+}
+
+.history p{
+  font-size:16px;
+  color:#555;
+  line-height:1.8;
+  max-width:800px;
+  margin:auto;
+}
+
+/* FOOTER */
+footer{
+  background:#0f1e4d;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:80px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>ALPS</h2>
+  <ul>
+    <li><a href="index.html" style="color:white; text-decoration:none;">Home</a></li>
+        <li><a href="subjects.html" style="color:white; text-decoration:none;">Subjects</a></li>
+        <li><a href="facilities.html" style="color:white; text-decoration:none;">Facilities</a></li>
+		<li><a href="contact.html" style="color:white; text-decoration:none;">Contact</a></li>
+        <li><a href="about.html" style="color:white; text-decoration:none;">About</a></li>
+        <li><a href="#" style="color:white; text-decoration:none;" onclick="logout()">Log Out</a></li>
+  </ul>
+</nav>
+
+<section class="history">
+  <h1>Our History</h1>
+  <p>
+    The Diocesan Shrine and Parish of Nuestra Señora de Aranzazu in San Mateo, Rizal,
+    established in 1596 by Augustinians and later managed by Jesuits, is the only parish
+    dedicated to this Basque Virgin Mary title in the Philippines.
+  </p>
+  <br><br>
+  <p>
+    Founded in 1705, the church houses a miraculous image recognized as a protector
+    against calamities. In 2025, it was elevated to a National Shrine, marking its
+    enduring spiritual and historical significance.
+  </p>
+</section>
+
+<footer>
+  © 2026 Aquinas Learning Portal System | Faith & Knowledge
+</footer>
+
+<script>
+window.onload = function(){
+  if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+  }
+}
+</script>
+
+</body>
+</html>
