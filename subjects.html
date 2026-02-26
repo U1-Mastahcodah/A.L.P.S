@@ -66,8 +66,8 @@ nav a.active, nav a:hover {
 }
 
 .subject-item {
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items:center;
   gap:15px;
   background:white;
   border-radius:12px;
@@ -82,11 +82,24 @@ nav a.active, nav a:hover {
   color:#0f1e4d;
 }
 
+.subject-symbol {
+  width:60px;
+  height:60px;
+  background:#1e3a8a;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:bold;
+  font-size:24px;
+  flex-shrink:0;
+}
+
 .subject-left {
   display:flex;
   flex-direction:column;
   gap:10px;
-  flex:0;
 }
 
 .subject-name {
@@ -101,14 +114,6 @@ nav a.active, nav a:hover {
 
 .subject-item:hover .subject-desc {
   color:#132340;
-}
-
-.subject-img {
-  width:150px;
-  height:110px;
-  object-fit:cover;
-  border-radius:10px;
-  flex-shrink:0;
 }
 
 footer {
@@ -128,9 +133,10 @@ footer {
     flex-direction:column;
     align-items:flex-start;
   }
-  .subject-img{
+  .subject-symbol{
     width:100%;
     height:auto;
+    font-size:30px;
   }
   .search-box{
     width:100%;
@@ -159,93 +165,84 @@ footer {
 
 <div class="subject-container">
 
-  <!-- Math -->
-  <div class="subject-item" data-name="Math" onclick="expandDescription(this)">
-    <img src="images/math.jpg" class="subject-img" alt="Math">
+  <!-- Subjects with inline symbols -->
+  <div class="subject-item" data-name="Math">
+    <div class="subject-symbol">∑</div>
     <div class="subject-left">
       <div class="subject-name">Math</div>
       <div class="subject-desc">Explore numbers, equations, and problem solving.</div>
     </div>
   </div>
 
-  <!-- Science -->
-  <div class="subject-item" data-name="Science" onclick="expandDescription(this)">
-    <img src="images/science.jpg" class="subject-img" alt="Science">
+  <div class="subject-item" data-name="Science">
+    <div class="subject-symbol">⚛</div>
     <div class="subject-left">
       <div class="subject-name">Science</div>
       <div class="subject-desc">Explore Biology, Chemistry, Earth Science, and Physics.</div>
     </div>
   </div>
 
-  <!-- English -->
-  <div class="subject-item" data-name="English" onclick="expandDescription(this)">
-    <img src="images/english.jpg" class="subject-img" alt="English">
+  <div class="subject-item" data-name="English">
+    <div class="subject-symbol">✎</div>
     <div class="subject-left">
       <div class="subject-name">English</div>
       <div class="subject-desc">Improve reading, writing, and communication skills.</div>
     </div>
   </div>
 
-  <!-- Araling Panlipunan -->
-  <div class="subject-item" data-name="Araling Panlipunan" onclick="expandDescription(this)">
-    <img src="images/aralingpanlipunan.jpg" class="subject-img" alt="Araling Panlipunan">
+  <div class="subject-item" data-name="Araling Panlipunan">
+    <div class="subject-symbol">🌎</div>
     <div class="subject-left">
       <div class="subject-name">Araling Panlipunan</div>
       <div class="subject-desc">Learn history, culture, and society.</div>
     </div>
   </div>
 
-  <!-- Filipino -->
-  <div class="subject-item" data-name="Filipino" onclick="expandDescription(this)">
-    <img src="images/filipino.jpg" class="subject-img" alt="Filipino">
+  <div class="subject-item" data-name="Filipino">
+    <div class="subject-symbol">📚</div>
     <div class="subject-left">
       <div class="subject-name">Filipino</div>
       <div class="subject-desc">Develop language and literature skills in Filipino.</div>
     </div>
   </div>
 
-  <!-- MAPEH -->
-  <div class="subject-item" data-name="MAPEH" onclick="expandDescription(this)">
-    <img src="images/mapeh.jpg" class="subject-img" alt="MAPEH">
+  <div class="subject-item" data-name="MAPEH">
+    <div class="subject-symbol">🎨</div>
     <div class="subject-left">
       <div class="subject-name">MAPEH</div>
       <div class="subject-desc">Music, Arts, PE, and Health.</div>
     </div>
   </div>
 
-  <!-- Technical Writing -->
-  <div class="subject-item" data-name="Technical Writing" onclick="expandDescription(this)">
-    <img src="images/technicalwriting.jpg" class="subject-img" alt="Technical Writing">
+  <div class="subject-item" data-name="Technical Writing">
+    <div class="subject-symbol">🖋</div>
     <div class="subject-left">
       <div class="subject-name">Technical Writing</div>
       <div class="subject-desc">Practice structured professional writing.</div>
     </div>
   </div>
 
-  <!-- ICT -->
-  <div class="subject-item" data-name="ICT" onclick="expandDescription(this)">
-    <img src="images/ict.jpg" class="subject-img" alt="ICT">
+  <div class="subject-item" data-name="ICT">
+    <div class="subject-symbol">💻</div>
     <div class="subject-left">
       <div class="subject-name">ICT</div>
       <div class="subject-desc">Information and Communication Technology.</div>
     </div>
   </div>
 
-  <!-- TLE -->
-  <div class="subject-item" data-name="TLE" onclick="expandDescription(this)">
-    <img src="images/tle.jpg" class="subject-img" alt="TLE">
+  <div class="subject-item" data-name="TLE">
+    <div class="subject-symbol">🔧</div>
     <div class="subject-left">
       <div class="subject-name">TLE</div>
       <div class="subject-desc">Explore Programming, Home Economics, and Industrial Arts.</div>
     </div>
   </div>
 
-  <!-- VECL -->
-  <div class="subject-item" data-name="Vecl" onclick="expandDescription(this)">
-    <img src="images/vecl.jpg" class="subject-img" alt="Vecl">
+  <div class="subject-item" data-name="VECL">
+    <div class="subject-symbol">⚙</div>
     <div class="subject-left">
-      <div class="subject-name">Vecl</div>
-      <div class="subject-desc">Add description here for Vecl.</div>
+      <div class="subject-name">VECL</div>
+      <div class="subject-desc">Add description here for VECL.</div>
     </div>
   </div>
 
@@ -264,25 +261,7 @@ function filterSubjects(){
     item.style.display = name.includes(input) ? 'flex' : 'none';
   });
 }
-
-function expandDescription(card){
-  const desc = card.querySelector('.subject-desc');
-  if(desc.classList.contains("expanded")){
-    desc.innerHTML = desc.getAttribute("data-short") || desc.innerHTML;
-    desc.classList.remove("expanded");
-  } else {
-    desc.innerHTML = desc.getAttribute("data-long") || desc.innerHTML;
-    desc.classList.add("expanded");
-  }
-}
-
-window.onload = function(){
-  if(localStorage.getItem("loggedIn") !== "true"){
-    window.location.href = "./index.html";
-  }
-}
 </script>
 
 </body>
 </html>
-
