@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Subjects - Aquinas Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 body {
   margin:0;
@@ -66,12 +67,16 @@ nav a.active, nav a:hover {
 }
 
 .subject-item {
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
   background:white;
   border-radius:12px;
   padding:25px 30px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   transition:0.3s;
   cursor:pointer;
+  flex-wrap:wrap;
 }
 
 .subject-item:hover {
@@ -93,16 +98,11 @@ nav a.active, nav a:hover {
 .subject-desc {
   font-size:16px;
   color:#506288;
+  transition:color 0.3s;
 }
 
-.more-info {
-  margin-top:15px;
-  display:none;
-  background:#f4f6fa;
-  padding:15px;
-  border-radius:8px;
-  line-height:1.6;
-  font-size:15px;
+.subject-item:hover .subject-desc {
+  color:#132340;
 }
 
 footer {
@@ -113,8 +113,23 @@ footer {
   margin-top:40px;
   font-size:14px;
 }
+
+@media(max-width:800px){
+  .subject-container{
+    padding:20px;
+  }
+  .subject-item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .search-box{
+    width:100%;
+    margin-top:10px;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -136,112 +151,109 @@ footer {
 <div class="subject-container">
 
 <!-- MATH -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="Math">
+<div class="subject-item" data-name="Math" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">Math</div>
-    <div class="subject-desc">Explore numbers, equations, and problem solving.</div>
-    <div class="more-info">
-      Lesson: SOHCAHTOA & CHOSHACAH<br>
-      Used to solve right triangle problems.<br>
-      Includes sine, cosine, tangent and their reciprocals.
+    <div class="subject-desc"
+      data-short="Explore numbers, equations, and problem solving."
+      data-long="Explore numbers, equations, and problem solving. This includes SOHCAHTOA and CHOSHACAH, solving right triangles, sine, cosine, tangent, and their reciprocal ratios used in advanced trigonometry.">
+      Explore numbers, equations, and problem solving.
     </div>
   </div>
 </div>
 
 <!-- SCIENCE -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="Science">
+<div class="subject-item" data-name="Science" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">Science</div>
-    <div class="subject-desc">Explore Biology, Chemistry, and Physics.</div>
-    <div class="more-info">
-      Q1: Cardiovascular System<br>
-      Q2: Electron Configuration<br>
-      Q3: Volcano Parts<br>
-      Q4: Projectile Motion
+    <div class="subject-desc"
+      data-short="Explore Biology, Chemistry, and Physics."
+      data-long="Explore Biology, Chemistry, Earth Science, and Physics. Topics include the Cardiovascular System, Electron Configuration, Parts of a Volcano, and Projectile Motion concepts.">
+      Explore Biology, Chemistry, and Physics.
     </div>
   </div>
 </div>
 
 <!-- ENGLISH -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="English">
+<div class="subject-item" data-name="English" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">English</div>
-    <div class="subject-desc">Improve reading, writing, and communication skills.</div>
-    <div class="more-info">
-      Lesson: Formal Letter of Complaint<br>
-      Learn proper format, polite tone, and structure of formal writing.
+    <div class="subject-desc"
+      data-short="Improve reading, writing, and communication skills."
+      data-long="Improve reading, writing, and communication skills. Learn how to write a Formal Letter of Complaint including heading, inside address, subject line, salutation, body, complimentary close, and signature.">
+      Improve reading, writing, and communication skills.
     </div>
   </div>
 </div>
 
 <!-- AP -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="Araling Panlipunan">
+<div class="subject-item" data-name="Araling Panlipunan" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">Araling Panlipunan</div>
-    <div class="subject-desc">Learn history, culture, and society.</div>
-    <div class="more-info">
-      Topic: Implasyon<br>
-      Study causes, effects, and impact of rising prices in the economy.
+    <div class="subject-desc"
+      data-short="Learn history, culture, and society."
+      data-long="Learn history, culture, and society. Study Implasyon (Inflation), its causes, effects, rising prices of goods, decrease in purchasing power, and impact on the economy.">
+      Learn history, culture, and society.
     </div>
   </div>
 </div>
 
 <!-- FILIPINO -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="Filipino">
+<div class="subject-item" data-name="Filipino" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">Filipino</div>
-    <div class="subject-desc">Develop language and literature skills in Filipino.</div>
-    <div class="more-info">
-      Topic: Pagpapahayag ng Opinyon<br>
-      Learn respectful communication and proper opinion expression.
+    <div class="subject-desc"
+      data-short="Develop language and literature skills in Filipino."
+      data-long="Develop language and literature skills in Filipino. Q3 focuses on pagpapahayag ng opinyon, pagiging magalang sa diskusyon, pakikinig nang mabuti, at paggamit ng malinaw at simpleng pahayag na nakabatay sa katotohanan.">
+      Develop language and literature skills in Filipino.
     </div>
   </div>
 </div>
 
 <!-- MAPEH -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="MAPEH">
+<div class="subject-item" data-name="MAPEH" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">MAPEH</div>
-    <div class="subject-desc">Music, Arts, PE, and Health</div>
-    <div class="more-info">
-      Topic: Basketball Basic Skills<br>
-      Includes shooting, dribbling, passing, and teamwork.
+    <div class="subject-desc"
+      data-short="Music, Arts, PE, and Health."
+      data-long="Music, Arts, PE, and Health. Q4 focuses on Basketball basic skills including shooting, dribbling, passing, teamwork, and types of shots like layups and jump shots.">
+      Music, Arts, PE, and Health.
     </div>
   </div>
 </div>
 
 <!-- TECH WRITING -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="Technical Writing">
+<div class="subject-item" data-name="Technical Writing" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">Technical Writing</div>
-    <div class="subject-desc">Practice structured professional writing.</div>
-    <div class="more-info">
-      Topic: Brochure Design<br>
-      Learn layout, folds, elements, and marketing purpose.
+    <div class="subject-desc"
+      data-short="Practice structured professional writing."
+      data-long="Practice structured professional writing. Learn how to design brochures, understand their purpose, key elements like logo and images, and different fold types such as trifold and bifold.">
+      Practice structured professional writing.
     </div>
   </div>
 </div>
 
 <!-- ICT -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="ICT">
+<div class="subject-item" data-name="ICT" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">ICT</div>
-    <div class="subject-desc">Information and Communication Technology.</div>
-    <div class="more-info">
-      Topic: Street Accessories<br>
-      Learn about public space tools like traffic lights and benches.
+    <div class="subject-desc"
+      data-short="Information and Communication Technology."
+      data-long="Information and Communication Technology. Study street accessories located in public spaces such as lamp posts, trash bins, road signs, benches, traffic lights, and bicycle stands.">
+      Information and Communication Technology.
     </div>
   </div>
 </div>
 
 <!-- TLE -->
-<div class="subject-item" onclick="toggleInfo(this)" data-name="TLE">
+<div class="subject-item" data-name="TLE" onclick="expandDescription(this)">
   <div class="subject-left">
     <div class="subject-name">TLE</div>
-    <div class="subject-desc">Explore Programming, Home Economics, and Industrial Arts.</div>
-    <div class="more-info">
-      Programming: HTML Cards<br>
-      Learn structured web layout using div and CSS.
+    <div class="subject-desc"
+      data-short="Explore Programming, Home Economics, and Industrial Arts."
+      data-long="Explore Programming, Home Economics, and Industrial Arts. Programming lesson focuses on creating HTML cards using div containers and CSS styling for structured web layout.">
+      Explore Programming, Home Economics, and Industrial Arts.
     </div>
   </div>
 </div>
@@ -259,13 +271,20 @@ function filterSubjects(){
   const items = document.querySelectorAll('.subject-item');
   items.forEach(item => {
     const name = item.getAttribute('data-name').toLowerCase();
-    item.style.display = name.includes(input) ? 'block' : 'none';
+    item.style.display = name.includes(input) ? 'flex' : 'none';
   });
 }
 
-function toggleInfo(card){
-  const info = card.querySelector('.more-info');
-  info.style.display = info.style.display === "block" ? "none" : "block";
+function expandDescription(card){
+  const desc = card.querySelector('.subject-desc');
+
+  if(desc.classList.contains("expanded")){
+    desc.innerHTML = desc.getAttribute("data-short");
+    desc.classList.remove("expanded");
+  } else {
+    desc.innerHTML = desc.getAttribute("data-long");
+    desc.classList.add("expanded");
+  }
 }
 
 window.onload = function(){
