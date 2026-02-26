@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Subjects - Aquinas Portal</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
 body {
   margin:0;
@@ -20,11 +19,6 @@ header {
   padding:15px 30px;
   background:#1e3a8a;
   color:white;
-}
-
-header h2 {
-  font-weight:600;
-  letter-spacing:1px;
 }
 
 nav a {
@@ -68,15 +62,15 @@ nav a.active, nav a:hover {
 
 .subject-item {
   display:flex;
-  justify-content: space-between;
   align-items:center;
+  gap:20px;
   background:white;
   border-radius:12px;
   padding:25px 30px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition:0.3s;
   cursor:pointer;
   flex-wrap:wrap;
+  transition:0.3s;
 }
 
 .subject-item:hover {
@@ -84,10 +78,20 @@ nav a.active, nav a:hover {
   color:#0f1e4d;
 }
 
+.subject-icon img {
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  border-radius:12px;
+  flex-shrink:0;
+}
+
 .subject-left {
   display:flex;
   flex-direction:column;
   gap:10px;
+  flex:1;
+  min-width:200px;
 }
 
 .subject-name {
@@ -122,6 +126,10 @@ footer {
     flex-direction:column;
     align-items:flex-start;
   }
+  .subject-icon img{
+    width:100%;
+    height:auto;
+  }
   .search-box{
     width:100%;
     margin-top:10px;
@@ -145,18 +153,21 @@ footer {
 
 <div class="title-bar">
   Subjects
-  <input type="text" class="search-box" placeholder="Search subjects..." onkeyup="filterSubjects()">
+  <input type="text" class="search-box" placeholder="Search subjects..." onkeyup="filterSubjects()" />
 </div>
 
 <div class="subject-container">
 
 <!-- MATH -->
 <div class="subject-item" data-name="Math" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/math.png" alt="Math" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">Math</div>
     <div class="subject-desc"
       data-short="Explore numbers, equations, and problem solving."
-      data-long="Explore numbers, equations, and problem solving. This includes SOHCAHTOA and CHOSHACAO, solving right triangles, sine, cosine, tangent, and their reciprocal ratios used in advanced trigonometry.">
+      data-long="Explore numbers, equations, and problem solving including SOHCAHTOA, CHOSHACAO, trigonometry ratios, and more.">
       Explore numbers, equations, and problem solving.
     </div>
   </div>
@@ -164,11 +175,14 @@ footer {
 
 <!-- SCIENCE -->
 <div class="subject-item" data-name="Science" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/science.png" alt="Science" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">Science</div>
     <div class="subject-desc"
       data-short="Explore Biology, Chemistry, and Physics."
-      data-long="Explore Biology, Chemistry, Earth Science, and Physics. Topics include the Cardiovascular System, Electron Configuration, Parts of a Volcano, and Projectile Motion concepts.">
+      data-long="Explore Biology, Chemistry, Earth Science, and Physics including the cardiovascular system, electron configuration, volcano parts, projectile motion, and more.">
       Explore Biology, Chemistry, and Physics.
     </div>
   </div>
@@ -176,23 +190,29 @@ footer {
 
 <!-- ENGLISH -->
 <div class="subject-item" data-name="English" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/english.png" alt="English" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">English</div>
     <div class="subject-desc"
       data-short="Improve reading, writing, and communication skills."
-      data-long="Improve reading, writing, and communication skills. Learn how to write a Formal Letter of Complaint including heading, inside address, subject line, salutation, body, complimentary close, and signature.">
+      data-long="Improve reading, writing, and communication skills including formal letter writing components and styles.">
       Improve reading, writing, and communication skills.
     </div>
   </div>
 </div>
 
-<!-- AP -->
+<!-- ARALING PANLIPUNAN -->
 <div class="subject-item" data-name="Araling Panlipunan" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/aralingpanlipunan.png" alt="Araling Panlipunan" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">Araling Panlipunan</div>
     <div class="subject-desc"
       data-short="Learn history, culture, and society."
-      data-long="Learn history, culture, and society. Study Implasyon (Inflation), its causes, effects, rising prices of goods, decrease in purchasing power, and impact on the economy.">
+      data-long="Learn history, culture, and society including inflation, causes, effects, purchasing power, and economic impacts.">
       Learn history, culture, and society.
     </div>
   </div>
@@ -200,11 +220,14 @@ footer {
 
 <!-- FILIPINO -->
 <div class="subject-item" data-name="Filipino" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/filipino.png" alt="Filipino" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">Filipino</div>
     <div class="subject-desc"
       data-short="Develop language and literature skills in Filipino."
-      data-long="Develop language and literature skills in Filipino. Q3 focuses on pagpapahayag ng opinyon, pagiging magalang sa diskusyon, pakikinig nang mabuti, at paggamit ng malinaw at simpleng pahayag na nakabatay sa katotohanan.">
+      data-long="Q3 focuses on expressing opinions, being respectful in discussions, listening carefully, and using clear simple statements based on facts.">
       Develop language and literature skills in Filipino.
     </div>
   </div>
@@ -212,23 +235,29 @@ footer {
 
 <!-- MAPEH -->
 <div class="subject-item" data-name="MAPEH" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/mapeh.png" alt="MAPEH" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">MAPEH</div>
     <div class="subject-desc"
       data-short="Music, Arts, PE, and Health."
-      data-long="Music, Arts, PE, and Health. Q4 focuses on Basketball basic skills including shooting, dribbling, passing, teamwork, and types of shots like layups and jump shots.">
+      data-long="Basketball basics including shooting, dribbling, passing, teamwork, and types of shots like layups and jump shots.">
       Music, Arts, PE, and Health.
     </div>
   </div>
 </div>
 
-<!-- TECH WRITING -->
+<!-- TECHNICAL WRITING -->
 <div class="subject-item" data-name="Technical Writing" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/technicalwriting.png" alt="Technical Writing" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">Technical Writing</div>
     <div class="subject-desc"
       data-short="Practice structured professional writing."
-      data-long="Practice structured professional writing. Learn how to design brochures, understand their purpose, key elements like logo and images, and different fold types such as trifold and bifold.">
+      data-long="Learn to design brochures, key elements like logos and images, and fold types such as trifold and bifold.">
       Practice structured professional writing.
     </div>
   </div>
@@ -236,11 +265,14 @@ footer {
 
 <!-- ICT -->
 <div class="subject-item" data-name="ICT" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/ict.png" alt="ICT" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">ICT</div>
     <div class="subject-desc"
       data-short="Information and Communication Technology."
-      data-long="Information and Communication Technology. Study street accessories located in public spaces such as lamp posts, trash bins, road signs, benches, traffic lights, and bicycle stands.">
+      data-long="Study street accessories in public spaces such as lamp posts, trash bins, road signs, benches, traffic lights, and bicycle stands.">
       Information and Communication Technology.
     </div>
   </div>
@@ -248,12 +280,30 @@ footer {
 
 <!-- TLE -->
 <div class="subject-item" data-name="TLE" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/tle.png" alt="TLE" />
+  </div>
   <div class="subject-left">
     <div class="subject-name">TLE</div>
     <div class="subject-desc"
       data-short="Explore Programming, Home Economics, and Industrial Arts."
-      data-long="Explore Programming, Home Economics, and Industrial Arts. Programming lesson focuses on creating HTML cards using div containers and CSS styling for structured web layout.">
+      data-long="Programming lessons on creating HTML cards using div containers and CSS for structured web layout.">
       Explore Programming, Home Economics, and Industrial Arts.
+    </div>
+  </div>
+</div>
+
+<!-- VECL -->
+<div class="subject-item" data-name="Vecl" onclick="expandDescription(this)">
+  <div class="subject-icon">
+    <img src="images/vecl.png" alt="Vecl" />
+  </div>
+  <div class="subject-left">
+    <div class="subject-name">Vecl</div>
+    <div class="subject-desc"
+      data-short="Add description here."
+      data-long="Add description here for Vecl.">
+      Add description here.
     </div>
   </div>
 </div>
@@ -261,11 +311,10 @@ footer {
 </div>
 
 <footer>
-  @ 2026 Aquinas Learning Portal System | Faith & Knowledge
+  © 2026 Aquinas Learning Portal System | Faith & Knowledge
 </footer>
 
 <script>
-
 function filterSubjects(){
   const input = document.querySelector('.search-box').value.toLowerCase();
   const items = document.querySelectorAll('.subject-item');
@@ -277,7 +326,6 @@ function filterSubjects(){
 
 function expandDescription(card){
   const desc = card.querySelector('.subject-desc');
-
   if(desc.classList.contains("expanded")){
     desc.innerHTML = desc.getAttribute("data-short");
     desc.classList.remove("expanded");
@@ -292,8 +340,9 @@ window.onload = function(){
     window.location.href = "./index.html";
   }
 }
-
 </script>
 
 </body>
 </html>
+
+
