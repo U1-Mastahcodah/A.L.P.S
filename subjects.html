@@ -5,23 +5,138 @@
 <title>Subjects - Aquinas Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body { margin:0; font-family:'Segoe UI', sans-serif; background:#f2f2f2; color:#132340; }
-header { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:#1e3a8a; color:white; }
-header h2 { font-weight:600; letter-spacing:1px; }
-nav a { margin-left:25px; text-decoration:none; color:white; font-size:16px; padding:6px 14px; border-radius:8px; transition:0.3s; }
-nav a.active, nav a:hover { background:#d4af37; color:#0f1e4d; }
-.title-bar { padding:20px 40px; font-size:28px; font-weight:bold; display:flex; justify-content:space-between; align-items:center; }
-.search-box { width:250px; padding:8px 12px; border-radius:6px; border:1px solid #ccc; font-size:16px; }
-.subject-container { display:flex; flex-direction:column; gap:25px; padding:30px 40px; }
-.subject-item { display:flex; align-items:center; gap:15px; background:white; border-radius:12px; padding:20px 25px; box-shadow:0 6px 20px rgba(0,0,0,0.08); cursor:pointer; transition:0.3s; }
-.subject-item:hover { background:#d4af37; color:#0f1e4d; }
-.subject-left { display:flex; flex-direction:column; gap:10px; flex:0; }
-.subject-name { font-size:24px; font-weight:600; }
-.subject-desc { font-size:16px; color:#506288; }
-.subject-item:hover .subject-desc { color:#132340; }
-.subject-img { width:150px; height:110px; object-fit:cover; border-radius:10px; flex-shrink:0; }
-footer { text-align:center; padding:20px; background:#1e3a8a; color:white; margin-top:40px; font-size:14px; }
-@media(max-width:800px){ .subject-container{ padding:20px; } .subject-item{ flex-direction:column; align-items:flex-start; } .subject-img{ width:100%; height:auto; } .search-box{ width:100%; margin-top:10px; } }
+body {
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background:#f2f2f2;
+  color:#132340;
+}
+
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:#1e3a8a;
+  color:white;
+}
+
+header h2 {
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+nav a {
+  margin-left:25px;
+  text-decoration:none;
+  color:white;
+  font-size:16px;
+  padding:6px 14px;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+nav a.active, nav a:hover {
+  background:#d4af37;
+  color:#0f1e4d;
+}
+
+.title-bar {
+  padding:20px 40px;
+  font-size:28px;
+  font-weight:bold;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.search-box {
+  width:250px;
+  padding:8px 12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+.subject-container {
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  padding:30px 40px;
+}
+
+.subject-item {
+  display: flex;
+  align-items: center;
+  gap:15px;
+  background:white;
+  border-radius:12px;
+  padding:20px 25px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.subject-item:hover {
+  background:#d4af37;
+  color:#0f1e4d;
+}
+
+.subject-left {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex:0;
+}
+
+.subject-name {
+  font-size:24px;
+  font-weight:600;
+}
+
+.subject-desc {
+  font-size:16px;
+  color:#506288;
+}
+
+.subject-item:hover .subject-desc {
+  color:#132340;
+}
+
+.subject-img {
+  width:150px;
+  height:110px;
+  object-fit:cover;
+  border-radius:10px;
+  flex-shrink:0;
+}
+
+footer {
+  text-align:center;
+  padding:20px;
+  background:#1e3a8a;
+  color:white;
+  margin-top:40px;
+  font-size:14px;
+}
+
+@media(max-width:800px){
+  .subject-container{
+    padding:20px;
+  }
+  .subject-item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .subject-img{
+    width:100%;
+    height:auto;
+  }
+  .search-box{
+    width:100%;
+    margin-top:10px;
+  }
+}
 </style>
 </head>
 <body>
@@ -44,80 +159,90 @@ footer { text-align:center; padding:20px; background:#1e3a8a; color:white; margi
 
 <div class="subject-container">
 
+  <!-- Math -->
   <div class="subject-item" data-name="Math" onclick="expandDescription(this)">
-    <img src="images/math.png" class="subject-img" alt="Math">
+    <img src="images/math.jpg" class="subject-img" alt="Math">
     <div class="subject-left">
       <div class="subject-name">Math</div>
       <div class="subject-desc">Explore numbers, equations, and problem solving.</div>
     </div>
   </div>
 
+  <!-- Science -->
   <div class="subject-item" data-name="Science" onclick="expandDescription(this)">
-    <img src="images/science.png" class="subject-img" alt="Science">
+    <img src="images/science.jpg" class="subject-img" alt="Science">
     <div class="subject-left">
       <div class="subject-name">Science</div>
       <div class="subject-desc">Explore Biology, Chemistry, Earth Science, and Physics.</div>
     </div>
   </div>
 
+  <!-- English -->
   <div class="subject-item" data-name="English" onclick="expandDescription(this)">
-    <img src="images/english.png" class="subject-img" alt="English">
+    <img src="images/english.jpg" class="subject-img" alt="English">
     <div class="subject-left">
       <div class="subject-name">English</div>
       <div class="subject-desc">Improve reading, writing, and communication skills.</div>
     </div>
   </div>
 
+  <!-- Araling Panlipunan -->
   <div class="subject-item" data-name="Araling Panlipunan" onclick="expandDescription(this)">
-    <img src="images/aralingpanlipunan.png" class="subject-img" alt="Araling Panlipunan">
+    <img src="images/aralingpanlipunan.jpg" class="subject-img" alt="Araling Panlipunan">
     <div class="subject-left">
       <div class="subject-name">Araling Panlipunan</div>
       <div class="subject-desc">Learn history, culture, and society.</div>
     </div>
   </div>
 
+  <!-- Filipino -->
   <div class="subject-item" data-name="Filipino" onclick="expandDescription(this)">
-    <img src="images/filipino.png" class="subject-img" alt="Filipino">
+    <img src="images/filipino.jpg" class="subject-img" alt="Filipino">
     <div class="subject-left">
       <div class="subject-name">Filipino</div>
       <div class="subject-desc">Develop language and literature skills in Filipino.</div>
     </div>
   </div>
 
+  <!-- MAPEH -->
   <div class="subject-item" data-name="MAPEH" onclick="expandDescription(this)">
-    <img src="images/mapeh.png" class="subject-img" alt="MAPEH">
+    <img src="images/mapeh.jpg" class="subject-img" alt="MAPEH">
     <div class="subject-left">
       <div class="subject-name">MAPEH</div>
       <div class="subject-desc">Music, Arts, PE, and Health.</div>
     </div>
   </div>
 
+  <!-- Technical Writing -->
   <div class="subject-item" data-name="Technical Writing" onclick="expandDescription(this)">
-    <img src="images/technicalwriting.png" class="subject-img" alt="Technical Writing">
+    <img src="images/technicalwriting.jpg" class="subject-img" alt="Technical Writing">
     <div class="subject-left">
       <div class="subject-name">Technical Writing</div>
       <div class="subject-desc">Practice structured professional writing.</div>
     </div>
   </div>
 
+  <!-- ICT -->
   <div class="subject-item" data-name="ICT" onclick="expandDescription(this)">
-    <img src="images/ict.png" class="subject-img" alt="ICT">
+    <img src="images/ict.jpg" class="subject-img" alt="ICT">
     <div class="subject-left">
       <div class="subject-name">ICT</div>
       <div class="subject-desc">Information and Communication Technology.</div>
     </div>
   </div>
 
+  <!-- TLE -->
   <div class="subject-item" data-name="TLE" onclick="expandDescription(this)">
-    <img src="images/tle.png" class="subject-img" alt="TLE">
+    <img src="images/tle.jpg" class="subject-img" alt="TLE">
     <div class="subject-left">
       <div class="subject-name">TLE</div>
       <div class="subject-desc">Explore Programming, Home Economics, and Industrial Arts.</div>
     </div>
   </div>
 
+  <!-- VECL -->
   <div class="subject-item" data-name="Vecl" onclick="expandDescription(this)">
-    <img src="images/vecl.png" class="subject-img" alt="Vecl">
+    <img src="images/vecl.jpg" class="subject-img" alt="Vecl">
     <div class="subject-left">
       <div class="subject-name">Vecl</div>
       <div class="subject-desc">Add description here for Vecl.</div>
@@ -160,3 +285,4 @@ window.onload = function(){
 
 </body>
 </html>
+
