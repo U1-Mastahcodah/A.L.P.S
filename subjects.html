@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>Subjects - Aquinas Portal</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
   margin:0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Segoe UI', sans-serif;
   background:#f2f2f2;
   color:#132340;
 }
@@ -19,6 +19,11 @@ header {
   padding:15px 30px;
   background:#1e3a8a;
   color:white;
+}
+
+header h2 {
+  font-weight:600;
+  letter-spacing:1px;
 }
 
 nav a {
@@ -61,15 +66,14 @@ nav a.active, nav a:hover {
 }
 
 .subject-item {
-  display:flex;
-  align-items:center;
-  gap:20px;
+  display: flex;
+  align-items: center;
+  gap:15px;
   background:white;
   border-radius:12px;
-  padding:25px 30px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  padding:20px 25px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
   cursor:pointer;
-  flex-wrap:wrap;
   transition:0.3s;
 }
 
@@ -78,20 +82,10 @@ nav a.active, nav a:hover {
   color:#0f1e4d;
 }
 
-.subject-icon img {
-  width:90px;
-  height:90px;
-  object-fit:contain;
-  border-radius:12px;
-  flex-shrink:0;
-}
-
 .subject-left {
   display:flex;
   flex-direction:column;
   gap:10px;
-  flex:1;
-  min-width:200px;
 }
 
 .subject-name {
@@ -102,11 +96,18 @@ nav a.active, nav a:hover {
 .subject-desc {
   font-size:16px;
   color:#506288;
-  transition:color 0.3s;
 }
 
 .subject-item:hover .subject-desc {
   color:#132340;
+}
+
+.subject-img {
+  width:150px;
+  height:110px;
+  object-fit:cover;
+  border-radius:10px;
+  flex-shrink:0;
 }
 
 footer {
@@ -126,7 +127,7 @@ footer {
     flex-direction:column;
     align-items:flex-start;
   }
-  .subject-icon img{
+  .subject-img{
     width:100%;
     height:auto;
   }
@@ -137,7 +138,6 @@ footer {
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -153,160 +153,100 @@ footer {
 
 <div class="title-bar">
   Subjects
-  <input type="text" class="search-box" placeholder="Search subjects..." onkeyup="filterSubjects()" />
+  <input type="text" class="search-box" placeholder="Search subjects..." onkeyup="filterSubjects()">
 </div>
 
 <div class="subject-container">
 
-<!-- MATH -->
-<div class="subject-item" data-name="Math" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/math.png" alt="Math" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">Math</div>
-    <div class="subject-desc"
-      data-short="Explore numbers, equations, and problem solving."
-      data-long="Explore numbers, equations, and problem solving including SOHCAHTOA, CHOSHACAO, trigonometry ratios, and more.">
-      Explore numbers, equations, and problem solving.
+  <!-- Math -->
+  <div class="subject-item" data-name="Math" onclick="expandDescription(this)">
+    <img src="images/math.png" class="subject-img" alt="Math">
+    <div class="subject-left">
+      <div class="subject-name">Math</div>
+      <div class="subject-desc">Explore numbers, equations, and problem solving.</div>
     </div>
   </div>
-</div>
 
-<!-- SCIENCE -->
-<div class="subject-item" data-name="Science" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/science.png" alt="Science" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">Science</div>
-    <div class="subject-desc"
-      data-short="Explore Biology, Chemistry, and Physics."
-      data-long="Explore Biology, Chemistry, Earth Science, and Physics including the cardiovascular system, electron configuration, volcano parts, projectile motion, and more.">
-      Explore Biology, Chemistry, and Physics.
+  <!-- Science -->
+  <div class="subject-item" data-name="Science" onclick="expandDescription(this)">
+    <img src="images/science.png" class="subject-img" alt="Science">
+    <div class="subject-left">
+      <div class="subject-name">Science</div>
+      <div class="subject-desc">Explore Biology, Chemistry, Earth Science, and Physics.</div>
     </div>
   </div>
-</div>
 
-<!-- ENGLISH -->
-<div class="subject-item" data-name="English" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/english.png" alt="English" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">English</div>
-    <div class="subject-desc"
-      data-short="Improve reading, writing, and communication skills."
-      data-long="Improve reading, writing, and communication skills including formal letter writing components and styles.">
-      Improve reading, writing, and communication skills.
+  <!-- English -->
+  <div class="subject-item" data-name="English" onclick="expandDescription(this)">
+    <img src="images/english.png" class="subject-img" alt="English">
+    <div class="subject-left">
+      <div class="subject-name">English</div>
+      <div class="subject-desc">Improve reading, writing, and communication skills.</div>
     </div>
   </div>
-</div>
 
-<!-- ARALING PANLIPUNAN -->
-<div class="subject-item" data-name="Araling Panlipunan" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/aralingpanlipunan.png" alt="Araling Panlipunan" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">Araling Panlipunan</div>
-    <div class="subject-desc"
-      data-short="Learn history, culture, and society."
-      data-long="Learn history, culture, and society including inflation, causes, effects, purchasing power, and economic impacts.">
-      Learn history, culture, and society.
+  <!-- Araling Panlipunan -->
+  <div class="subject-item" data-name="Araling Panlipunan" onclick="expandDescription(this)">
+    <img src="images/aralingpanlipunan.png" class="subject-img" alt="Araling Panlipunan">
+    <div class="subject-left">
+      <div class="subject-name">Araling Panlipunan</div>
+      <div class="subject-desc">Learn history, culture, and society.</div>
     </div>
   </div>
-</div>
 
-<!-- FILIPINO -->
-<div class="subject-item" data-name="Filipino" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/filipino.png" alt="Filipino" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">Filipino</div>
-    <div class="subject-desc"
-      data-short="Develop language and literature skills in Filipino."
-      data-long="Q3 focuses on expressing opinions, being respectful in discussions, listening carefully, and using clear simple statements based on facts.">
-      Develop language and literature skills in Filipino.
+  <!-- Filipino -->
+  <div class="subject-item" data-name="Filipino" onclick="expandDescription(this)">
+    <img src="images/filipino.png" class="subject-img" alt="Filipino">
+    <div class="subject-left">
+      <div class="subject-name">Filipino</div>
+      <div class="subject-desc">Develop language and literature skills in Filipino.</div>
     </div>
   </div>
-</div>
 
-<!-- MAPEH -->
-<div class="subject-item" data-name="MAPEH" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/mapeh.png" alt="MAPEH" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">MAPEH</div>
-    <div class="subject-desc"
-      data-short="Music, Arts, PE, and Health."
-      data-long="Basketball basics including shooting, dribbling, passing, teamwork, and types of shots like layups and jump shots.">
-      Music, Arts, PE, and Health.
+  <!-- MAPEH -->
+  <div class="subject-item" data-name="MAPEH" onclick="expandDescription(this)">
+    <img src="images/mapeh.png" class="subject-img" alt="MAPEH">
+    <div class="subject-left">
+      <div class="subject-name">MAPEH</div>
+      <div class="subject-desc">Music, Arts, PE, and Health.</div>
     </div>
   </div>
-</div>
 
-<!-- TECHNICAL WRITING -->
-<div class="subject-item" data-name="Technical Writing" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/technicalwriting.png" alt="Technical Writing" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">Technical Writing</div>
-    <div class="subject-desc"
-      data-short="Practice structured professional writing."
-      data-long="Learn to design brochures, key elements like logos and images, and fold types such as trifold and bifold.">
-      Practice structured professional writing.
+  <!-- Technical Writing -->
+  <div class="subject-item" data-name="Technical Writing" onclick="expandDescription(this)">
+    <img src="images/technicalwriting.png" class="subject-img" alt="Technical Writing">
+    <div class="subject-left">
+      <div class="subject-name">Technical Writing</div>
+      <div class="subject-desc">Practice structured professional writing.</div>
     </div>
   </div>
-</div>
 
-<!-- ICT -->
-<div class="subject-item" data-name="ICT" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/ict.png" alt="ICT" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">ICT</div>
-    <div class="subject-desc"
-      data-short="Information and Communication Technology."
-      data-long="Study street accessories in public spaces such as lamp posts, trash bins, road signs, benches, traffic lights, and bicycle stands.">
-      Information and Communication Technology.
+  <!-- ICT -->
+  <div class="subject-item" data-name="ICT" onclick="expandDescription(this)">
+    <img src="images/ict.png" class="subject-img" alt="ICT">
+    <div class="subject-left">
+      <div class="subject-name">ICT</div>
+      <div class="subject-desc">Information and Communication Technology.</div>
     </div>
   </div>
-</div>
 
-<!-- TLE -->
-<div class="subject-item" data-name="TLE" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/tle.png" alt="TLE" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">TLE</div>
-    <div class="subject-desc"
-      data-short="Explore Programming, Home Economics, and Industrial Arts."
-      data-long="Programming lessons on creating HTML cards using div containers and CSS for structured web layout.">
-      Explore Programming, Home Economics, and Industrial Arts.
+  <!-- TLE -->
+  <div class="subject-item" data-name="TLE" onclick="expandDescription(this)">
+    <img src="images/tle.png" class="subject-img" alt="TLE">
+    <div class="subject-left">
+      <div class="subject-name">TLE</div>
+      <div class="subject-desc">Explore Programming, Home Economics, and Industrial Arts.</div>
     </div>
   </div>
-</div>
 
-<!-- VECL -->
-<div class="subject-item" data-name="Vecl" onclick="expandDescription(this)">
-  <div class="subject-icon">
-    <img src="images/vecl.png" alt="Vecl" />
-  </div>
-  <div class="subject-left">
-    <div class="subject-name">Vecl</div>
-    <div class="subject-desc"
-      data-short="Add description here."
-      data-long="Add description here for Vecl.">
-      Add description here.
+  <!-- VECL -->
+  <div class="subject-item" data-name="Vecl" onclick="expandDescription(this)">
+    <img src="images/vecl.png" class="subject-img" alt="Vecl">
+    <div class="subject-left">
+      <div class="subject-name">Vecl</div>
+      <div class="subject-desc">Add description here for Vecl.</div>
     </div>
   </div>
-</div>
 
 </div>
 
@@ -327,10 +267,10 @@ function filterSubjects(){
 function expandDescription(card){
   const desc = card.querySelector('.subject-desc');
   if(desc.classList.contains("expanded")){
-    desc.innerHTML = desc.getAttribute("data-short");
+    desc.innerHTML = desc.getAttribute("data-short") || desc.innerHTML;
     desc.classList.remove("expanded");
   } else {
-    desc.innerHTML = desc.getAttribute("data-long");
+    desc.innerHTML = desc.getAttribute("data-long") || desc.innerHTML;
     desc.classList.add("expanded");
   }
 }
@@ -344,5 +284,3 @@ window.onload = function(){
 
 </body>
 </html>
-
-
