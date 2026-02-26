@@ -76,6 +76,7 @@ nav a:hover {
   display:flex;
   justify-content: space-between;
   align-items:center;
+  gap: 20px;
   background:white;
   border-radius:12px;
   padding:25px 30px;
@@ -93,7 +94,7 @@ nav a:hover {
 .subject-left {
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:8px;
 }
 
 .subject-name {
@@ -107,10 +108,11 @@ nav a:hover {
   transition:color 0.3s;
 }
 .facility-img {
-  width:120px;
-  height:100px;
+  width:150px;
+  height:110px;
   object-fit:cover;
   border-radius:10px;
+  flex-shrink: 0;
 }
 .subject-item:hover .subject-desc {
   color:#132340;
@@ -222,6 +224,7 @@ window.onload = function(){
 </body>
 
 </html>
+
 
 
 
