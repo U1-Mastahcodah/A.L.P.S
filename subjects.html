@@ -110,6 +110,7 @@ nav a.active, nav a:hover {
 .subject-desc {
   font-size:16px;
   color:#506288;
+  transition: color 0.3s;
 }
 
 .subject-item:hover .subject-desc {
@@ -165,84 +166,83 @@ footer {
 
 <div class="subject-container">
 
-  <!-- Subjects with inline symbols -->
-  <div class="subject-item" data-name="Math">
+  <div class="subject-item" data-name="Math" onclick="toggleDesc(this)">
     <div class="subject-symbol">∑</div>
     <div class="subject-left">
       <div class="subject-name">Math</div>
-      <div class="subject-desc">Explore numbers, equations, and problem solving.</div>
+      <div class="subject-desc" data-short="Numbers & equations" data-long="Explore numbers, equations, problem solving, algebra, geometry, and calculus.">Numbers & equations</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="Science">
+  <div class="subject-item" data-name="Science" onclick="toggleDesc(this)">
     <div class="subject-symbol">⚛</div>
     <div class="subject-left">
       <div class="subject-name">Science</div>
-      <div class="subject-desc">Explore Biology, Chemistry, Earth Science, and Physics.</div>
+      <div class="subject-desc" data-short="Biology, Chemistry, Physics" data-long="Explore Biology, Chemistry, Earth Science, Physics, experiments, and scientific methods.">Biology, Chemistry, Physics</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="English">
+  <div class="subject-item" data-name="English" onclick="toggleDesc(this)">
     <div class="subject-symbol">✎</div>
     <div class="subject-left">
       <div class="subject-name">English</div>
-      <div class="subject-desc">Improve reading, writing, and communication skills.</div>
+      <div class="subject-desc" data-short="Reading & Writing" data-long="Improve reading comprehension, writing skills, grammar, literature, and communication.">Reading & Writing</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="Araling Panlipunan">
+  <div class="subject-item" data-name="Araling Panlipunan" onclick="toggleDesc(this)">
     <div class="subject-symbol">🌎</div>
     <div class="subject-left">
       <div class="subject-name">Araling Panlipunan</div>
-      <div class="subject-desc">Learn history, culture, and society.</div>
+      <div class="subject-desc" data-short="History & Culture" data-long="Learn Philippine history, culture, society, geography, and current events.">History & Culture</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="Filipino">
+  <div class="subject-item" data-name="Filipino" onclick="toggleDesc(this)">
     <div class="subject-symbol">📚</div>
     <div class="subject-left">
       <div class="subject-name">Filipino</div>
-      <div class="subject-desc">Develop language and literature skills in Filipino.</div>
+      <div class="subject-desc" data-short="Language skills" data-long="Develop language and literature skills in Filipino, reading, writing, and communication.">Language skills</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="MAPEH">
+  <div class="subject-item" data-name="MAPEH" onclick="toggleDesc(this)">
     <div class="subject-symbol">🎨</div>
     <div class="subject-left">
       <div class="subject-name">MAPEH</div>
-      <div class="subject-desc">Music, Arts, PE, and Health.</div>
+      <div class="subject-desc" data-short="Music & Arts" data-long="Music, Arts, PE, and Health: learn instruments, painting, sports, and wellness.">Music & Arts</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="Technical Writing">
+  <div class="subject-item" data-name="Technical Writing" onclick="toggleDesc(this)">
     <div class="subject-symbol">🖋</div>
     <div class="subject-left">
       <div class="subject-name">Technical Writing</div>
-      <div class="subject-desc">Practice structured professional writing.</div>
+      <div class="subject-desc" data-short="Professional writing" data-long="Practice structured professional writing, reports, manuals, and formal documents.">Professional writing</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="ICT">
+  <div class="subject-item" data-name="ICT" onclick="toggleDesc(this)">
     <div class="subject-symbol">💻</div>
     <div class="subject-left">
       <div class="subject-name">ICT</div>
-      <div class="subject-desc">Information and Communication Technology.</div>
+      <div class="subject-desc" data-short="Technology basics" data-long="Information and Communication Technology: computers, networking, software, and digital literacy.">Technology basics</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="TLE">
+  <div class="subject-item" data-name="TLE" onclick="toggleDesc(this)">
     <div class="subject-symbol">🔧</div>
     <div class="subject-left">
       <div class="subject-name">TLE</div>
-      <div class="subject-desc">Explore Programming, Home Economics, and Industrial Arts.</div>
+      <div class="subject-desc" data-short="Practical skills" data-long="Explore programming, home economics, industrial arts, and hands-on learning activities.">Practical skills</div>
     </div>
   </div>
 
-  <div class="subject-item" data-name="VECL">
+  <div class="subject-item" data-name="VECL" onclick="toggleDesc(this)">
     <div class="subject-symbol">⚙</div>
     <div class="subject-left">
       <div class="subject-name">VECL</div>
-      <div class="subject-desc">Add description here for VECL.</div>
+      <div class="subject-desc" data-short="Vehicle Engineering" data-long="Vehicle Engineering & Construction: Learn design, mechanics, maintenance, and practical applications in modern vehicles.">Vehicle Engineering</div>
     </div>
   </div>
 
@@ -261,7 +261,20 @@ function filterSubjects(){
     item.style.display = name.includes(input) ? 'flex' : 'none';
   });
 }
+
+// Toggle description for all subjects
+function toggleDesc(card){
+  const desc = card.querySelector('.subject-desc');
+  if(desc.classList.contains("expanded")){
+    desc.innerText = desc.getAttribute("data-short");
+    desc.classList.remove("expanded");
+  } else {
+    desc.innerText = desc.getAttribute("data-long");
+    desc.classList.add("expanded");
+  }
+}
 </script>
 
 </body>
 </html>
+
