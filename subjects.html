@@ -60,13 +60,16 @@ nav a.active, nav a:hover {
   border:1px solid #ccc;
   font-size:16px;
 }
-
-.subject-container {
+.main-content{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+  .subject-container {
   display:flex;
   flex-direction:column;
   gap:25px;
   padding:30px 40px;
-  flex:1;
 }
 
 .subject-item {
@@ -156,7 +159,8 @@ footer {
     <a href="index.html">Log Out</a>
   </nav>
 </header>
-
+<div class="main-content">
+  
 <div class="title-bar">
   Subjects
   <input type="text" class="search-box" placeholder="Search subjects..." onkeyup="filterSubjects()">
@@ -240,10 +244,9 @@ footer {
   <img src="vecl.jpg" class="subject-img">
     <div class="subject-left">
       <div class="subject-name">VECL</div>
-      <div class="subject-desc" data-short="Values education is the process of nurturing moral, ethical, social, and spiritual principles in learners, shaping their attitudes and habits to become responsible, compassionate citizens"
-        </div>
-  </div>
+      <div class="subject-desc" data-short="Values education is the process of nurturing moral, ethical, social, and spiritual principles in learners, shaping their attitudes and habits to become responsible, compassionate citizens" 
 
+</div>
 </div>
 
 <footer>
